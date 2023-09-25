@@ -50,7 +50,7 @@
     margin: 3vw 3% 0% 3%;
 }
 
-#loginCont button {
+#btnLogin {
     width: 100%;
     padding: 8px 16px 8px 16px;
     border: none;
@@ -62,14 +62,37 @@
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.15) 1px 1px 10px 1px;
     transition: all 0.2s;
+    margin-bottom: 10px;
 }
 
-#loginCont button:hover {
+#btnLogin:hover {
     background-color: rgb(0, 0, 200)
 }
 
-#loginCont button:active {
+#btnLogin:active {
     background-color: darkblue
+}
+
+#btnRegister {
+    width: 100%;
+    padding: 8px 16px 8px 16px;
+    border: none;
+    border-radius: 12px;
+    background-color: rgb(100, 100, 100);
+    color: white;
+    font-weight: 600;
+    font-size: medium;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.15) 1px 1px 10px 1px;
+    transition: all 0.2s;
+}
+
+#btnRegister:hover {
+    background-color: rgb(70, 70, 70);
+}
+
+#btnRegister:active {
+    background-color: rgb(0, 0, 0)
 }
 
 #subBody {
