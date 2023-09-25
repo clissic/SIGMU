@@ -1,29 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Seguimiento de Multas de la Prefectura del Puerto de Montevideo</title>
-    <link rel="stylesheet" href="styles/styles.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Sistema de Seguimiento de Multas de la Prefectura del Puerto de Montevideo
+    </title>
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+  <body>
     <div id="body">
-        <div id="header">
-            <img id="cornerLogo" src="./img/esquineroPNN.jpg" alt="img PNN">
-            <div id="headerTitle">
-                <h1 id="mainTitle">SIGMU</h1>
-                <h3>Sistema de Gestión de Multas</h3>
-                <p>Prefectura del Puerto de Montevideo</p>    
-            </div>
-            <div id="loginCont">
-                <button id="btnLogin">INGRESAR</button>
-                <button id="btnRegister">REGISTRO</button>
-            </div>
+      <div id="header">
+        <img id="cornerLogo" src="./img/esquineroPNN.jpg" alt="img PNN" />
+        <div id="headerTitle">
+          <h1 id="mainTitle">SIGMU</h1>
+          <h3>Sistema de Gestión de Multas</h3>
+          <p>Prefectura del Puerto de Montevideo</p>
         </div>
-        <div id="subBody">
-            <label for="searchBar">Buscar por:</label>
-            <input type="search" name="searchBar" id="searchBar" placeholder="Artículo, buque, vehículo, monto, agencia marítima, propietario, etc...">
+        <div id="loginCont">
+          <button id="btnLogin">INGRESAR</button>
+          <div class="dropdown">
+            <button id="btnRequest">SOLICITAR</button>
+            <div class="dropdownRegCont">
+              <a href="#">NUEVA CUENTA</a>
+              <a href="#">CONTRASEÑA</a>
+            </div>
+          </div>
         </div>
+      </div>
+      <div id="subBody">
+        <label for="searchBar">Buscar por:</label>
+        <input
+          type="search"
+          name="searchBar"
+          id="searchBar"
+          placeholder="Artículo, buque, vehículo, monto, agencia marítima, propietario, etc..."
+        />
+        <div id="subBodyText">
+          <h4>Acerca de SIGMU:</h4>
+          <p>
+            El Sistema de Gestión de Multas para la Prefectura del Puerto de
+            Montevideo (SIGMU en adelante) es un sistema de uso reservado para
+            el personal especialmente autorizado de la Armada Nacional. Las
+            cuentas SIGMU son de uso personal, por lo que cada tripulante
+            deberá solicitar y eventualmente justificar la creación de su
+            cuenta. Queda terminantemente prohibido el uso compartido de
+            cuentas SIGMU. Es necesario aclarar que el sistema podrá ser auditado sin
+            previo aviso en cualquiera de sus áreas. El mal uso de SIGMU será
+            considerado como sanción grave.
+          </p>
+          <div id="footer">
+            <p id="marca">Desarrollado por JPC® - Montevideo - 25/09/2023</p>
+            <img src="./img/Logo JPC.svg" alt="JPC logo" />
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
