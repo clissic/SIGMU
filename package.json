@@ -1,0 +1,33 @@
+{
+  "name": "sigmu",
+  "version": "1.0.0",
+  "description": "Sistema de Gestión de Multas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon assets/js/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clissic/SIGMU.git"
+  },
+  "keywords": [
+    "Armada",
+    "PREMO",
+    "multas",
+    "gestion"
+  ],
+  "author": "JPC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clissic/SIGMU/issues"
+  },
+  "homepage": "https://github.com/clissic/SIGMU#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "nodemailer": "^6.9.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
