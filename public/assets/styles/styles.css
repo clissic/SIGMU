@@ -11,14 +11,15 @@
   flex-direction: column;
   width: 80vw;
   height: auto;
+  min-height: 90vh;
   border-radius: 50px;
   box-shadow: rgba(0, 0, 0, 0.15) 1px 1px 10px 1px;
+  background-color: rgba(128, 128, 128, 0.1);
 }
 
 #header {
   display: flex;
   flex-direction: row;
-  background-color: rgba(128, 128, 128, 0.1);
   width: 100%;
   border-radius: 50px 50px 0 0;
 }
@@ -126,7 +127,6 @@
 
 #subBody {
   height: 100%;
-  background-color: rgba(128, 128, 128, 0.1);
   border-radius: 0px 0px 50px 50px;
 }
 
