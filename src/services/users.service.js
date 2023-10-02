@@ -17,7 +17,7 @@ class UserService {
     }
   }
 
-  async create({ first_name, last_name, email, password }) {
+  async create({ first_name, last_name, rank, email, password }) {
     try {
       return await usersModel.create({
         first_name,

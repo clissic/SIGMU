@@ -4,7 +4,6 @@ import cors from "cors";
 import express from "express";
 import handlebars from "express-handlebars";
 import session from "express-session";
-import mongoose from "mongoose";
 import passport from "passport";
 import path from "path";
 import { __dirname } from "./config.js";
@@ -14,7 +13,8 @@ import { logger } from "./utils/logger.js";
 import { connectMongo } from "./utils/db-connection.js";
 // IMPORT ROUTERS
 import { indexRouter } from "./routes/index.html.routes.js";
-
+import { usersRouter } from "./routes/users.routes.js";
+import { sessionsRouter } from "./routes/sessions.router.js";
 
 const app = express();
 const PORT = env.port;
@@ -57,5 +57,9 @@ iniPassport();
 app.use(passport.initialize());
 app.use(passport.session());
 
+// ENDPOINTS
+app.use("/api/users", usersRouter);
+app.use("/api/sessions", sessionsRouter);
+
 // RENDERS
-app.use("/", indexRouter)
+app.use("/", indexRouter);

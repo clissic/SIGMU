@@ -5,6 +5,10 @@ export const indexRouter = express.Router();
 
 indexRouter.get("/", indexController.indexRender);
 
+indexRouter.get("/login", indexController.loginRender)
+
+indexRouter.get("/home", indexController.homeRender)
+
 /* indexRouter.get("/recover-form", indexController.recoverRender)
 
 indexRouter.post("/recover-form", indexController.recoverPass)

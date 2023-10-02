@@ -5,6 +5,14 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
 #body {
   display: flex;
   margin: 5vh auto 5vh auto;
@@ -54,6 +62,7 @@
 
 #btnLogin {
   width: 100%;
+  max-width: 10vw;
   padding: 8px 16px 8px 16px;
   border: none;
   border-radius: 12px;
@@ -67,6 +76,10 @@
   margin-bottom: 10px;
 }
 
+#btnLogin a {
+  color: white;
+}
+
 #btnLogin:hover {
   background-color: #005d8f;
 }
@@ -77,6 +90,7 @@
 
 #btnRequest {
   width: 100%;
+  max-width: 10vw;
   padding: 8px 16px 8px 16px;
   border: none;
   border-radius: 12px;
@@ -94,12 +108,15 @@
 }
 
 .dropdown {
-    width: 100%;
+  width: auto;
+  min-width: 10vw;
   position: relative;
   display: inline-block;
+  text-align: center;
 }
 
 .dropdownRegCont {
+  margin: auto;
   display: none;
   position: absolute;
   background-color: #f9f9f9;
@@ -107,13 +124,15 @@
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   border-radius: 20px 20px 20px 20px;
+  align-items: center;
 }
 
 .dropdownRegCont a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
 .dropdownRegCont a:hover {
@@ -146,43 +165,81 @@
 }
 
 #subBodyText {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 70%;
-    height: auto;
-    margin: auto;
-    padding-top: 3vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  height: auto;
+  margin: auto;
+  padding-top: 3vh;
 }
 
 #subBodyText h4 {
-    margin: 2vh 0 2vh 0;
-    color: rgb(85, 85, 85);
+  margin: 2vh 0 2vh 0;
+  color: rgb(85, 85, 85);
 }
 
 #subBodyText p {
-    color: gray;
-    font-size: small;
-    text-align: justify;
+  color: gray;
+  font-size: small;
+  text-align: justify;
 }
 
 #footer {
-    padding-top: 2vh;
-    margin: 6vh 0 6vh 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 2vh;
-    justify-content: end;
+  padding-top: 2vh;
+  margin: 6vh 0 6vh 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 2vh;
+  justify-content: end;
 }
 
 #marca {
-    font-size: smaller;
+  font-size: smaller;
+  color: gray;
+    text-align: justify;
 }
 
 #footer img {
-    width: 2%;
-    min-width: 10px;
-    filter: contrast(0);
+  width: 2%;
+  min-width: 10px;
+  filter: contrast(0);
+}
+
+/* LOGIN */
+
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2vh;
+  align-items: center;
+  padding-top: 5vh;
+  width: 30vw;
+  margin: auto;
+}
+
+#btnLI {
+  width: 100%;
+  max-width: 10vw;
+  padding: 8px 16px 8px 16px;
+  border: none;
+  border-radius: 12px;
+  background-color: #007dbf;
+  color: white;
+  font-weight: 600;
+  font-size: medium;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.15) 1px 1px 10px 1px;
+  transition: all 0.2s;
+  color: white;
+}
+
+#btnLI:hover {
+  background-color: #005d8f;
+}
+
+#btnLI:active {
+  background-color: #003754;
 }

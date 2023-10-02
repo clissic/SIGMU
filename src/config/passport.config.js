@@ -40,13 +40,12 @@ export function iniPassport() {
       },
       async (req, username, password, done) => {
         try {
-          const { first_name, last_name, email, age } = req.body;
+          const { first_name, last_name, rank, email, password } = req.body;
           let user = await UserMongoose.findOne({ email: username });
           if (user) {
             logger.info("User already exists");
             return done(null, false);
           }
-
           const newUser = {
             first_name,
             last_name,
@@ -59,8 +58,7 @@ export function iniPassport() {
           logger.info("User registration succesful");
           return done(null, userCreated);
         } catch (e) {
-          logger.info("Error in register");
-          logger.info(e);
+          logger.info("Error in register: " + e);
           return done(e);
         }
       }

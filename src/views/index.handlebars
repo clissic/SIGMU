@@ -1,13 +1,13 @@
     <div id="body">
       <div id="header">
-        <img id="cornerLogo" src="./img/esquineroPNN.jpg" alt="img PNN" />
+        <img id="cornerLogo" src="./img/cintaPNN.png" alt="img PNN" />
         <div id="headerTitle">
           <h1 id="mainTitle">SIGMU</h1>
           <h3>Sistema de Gestión de Multas</h3>
           <p>Prefectura del Puerto de Montevideo</p>
         </div>
         <div id="loginCont">
-          <button id="btnLogin">INGRESAR</button>
+          <button id="btnLogin"><a href="/login">INGRESAR</a></button>
           <div class="dropdown">
             <button id="btnRequest">SOLICITAR</button>
             <div class="dropdownRegCont">
@@ -18,8 +18,9 @@
         </div>
       </div>
       <div id="subBody">
-        <label for="searchBar">Buscar por:</label>
+        <label style="visibility: hidden" for="searchBar">Buscar por:</label>
         <input
+          style="visibility: hidden"
           type="search"
           name="searchBar"
           id="searchBar"
