@@ -12,14 +12,15 @@ import { iniPassport } from "./config/passport.config.js";
 import { logger } from "./utils/logger.js";
 import { connectMongo } from "./utils/db-connection.js";
 // IMPORT ROUTERS
-import { indexRouter } from "./routes/index.html.routes.js";
-import { usersRouter } from "./routes/users.routes.js";
+import { indexRouter } from "./routes/index.html.router.js";
+import { usersRouter } from "./routes/users.router.js";
 import { sessionsRouter } from "./routes/sessions.router.js";
+import { carFinesRouter } from "./routes/carFines.router.js";
 
 const app = express();
 const PORT = env.port;
 const MONGO_PASSWORD = env.mongoPassword;
-const dbName = "SIGMU_DB"
+const dbName = "SIGMU_DB";
 
 const httpServer = app.listen(PORT, () => {
   logger.info(`App running on ${__dirname} - server http://localhost:${PORT}`);
@@ -27,17 +28,26 @@ const httpServer = app.listen(PORT, () => {
 
 connectMongo();
 
+// CONFIG SESSION
 app.use(
   session({
     secret: "A98dB973kWpfsdq99Kmo",
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
     store: MongoStore.create({
       mongoUrl: `mongodb+srv://joaquinperezcoria:${MONGO_PASSWORD}@cluster0.zye6fyd.mongodb.net/${dbName}?retryWrites=true&w=majority`,
       mongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
     }),
+    cookie: {
+      maxAge: 86400000,
+    },
   })
 );
+
+// CONFIG PASSPORT
+iniPassport();
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(cors());
 app.use(compression());
@@ -52,14 +62,16 @@ app.engine("handlebars", handlebars.engine());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "handlebars");
 
-// CONFIG PASSPORT
-iniPassport();
-app.use(passport.initialize());
-app.use(passport.session());
-
 // ENDPOINTS
 app.use("/api/users", usersRouter);
 app.use("/api/sessions", sessionsRouter);
+app.use("/api/carFines", carFinesRouter);
 
 // RENDERS
 app.use("/", indexRouter);
+
+app.get("*", (req, res) => {
+  return res
+    .status(404)
+    .render("errorPage", {msg: "Error 404, página no encontrada."})
+});

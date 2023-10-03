@@ -1,0 +1,61 @@
+<div class="body">
+  <form action="/api/carFines/create">
+    <h6>Datos de la multa (obligatorio):</h6>
+    <label for="fine_date">Fecha:</label>
+    <input type="date" id="fine_date" name="fine_date" required />
+    <div class="form-group">
+      <label for="fine_time">Hora:</label>
+      <input type="time" id="fine_time" name="fine_time" required />
+    </div>
+    <div class="form-group">
+      <label for="fine_article">N° Artículo:</label>
+      <input type="text" id="fine_article" name="fine_article" required />
+    </div>
+    <div class="form-group">
+      <label for="fine_amount">U.R.:</label>
+      <input type="number" id="fine_amount" name="fine_amount" required></input>
+    </div>
+    <div class="form-group">
+      <label for="fine_extra_amount">Extra U.R.<span>*</span>:</label>
+      <input type="text" id="fine_extra_amount" name="fine_extra_amount" required />
+    </div>
+    <div class="form-group">
+        <input type="hidden" id="fine_author" value={{user.email}} />
+    </div>
+    <div class="form-group">
+      <label for="fine_proves">Pruebas<span>**</span>:</label>
+      <input type="text" id="fine_proves" name="fine_proves" required />
+    </div>
+    <h6>Datos del vehículo (obligatorio):</h6>
+    <div class="form-group">
+      <label for="car_brand">Marca:</label>
+      <input type="text" id="car_brand" name="car_brand" required />
+    </div>
+    <div class="form-group">
+      <label for="car_model">Modelo:</label>
+      <input type="text" id="car_model" name="car_model" required />
+    </div>
+    <div class="form-group">
+      <label for="car_reg_number">Matrícula:</label>
+      <input type="number" id="car_reg_number" name="car_reg_number" required />
+    </div>
+    <h6>Datos del propietario:</h6>
+    <div class="form-group">
+      <label for="owner_ci">C.I.:</label>
+      <input type="text" id="owner_ci" name="owner_ci"/>
+    </div>
+    <div class="form-group">
+      <label for="owner_name">Nombre:</label>
+      <input type="text" id="owner_name" name="owner_name"/>
+    </div>
+    <div class="form-group">
+      <label for="owner_tel">Teléfono:</label>
+      <input type="tel" id="owner_tel" name="owner_tel"/>
+    </div>
+    <div class="form-group">
+      <label for="owner_dir">Matrícula:</label>
+      <input type="text" id="owner_dir" name="owner_dir"/>
+    </div>
+    <input type="submit" value="Submit" id="addProductSubmitBtn" />
+  </form>
+</div>

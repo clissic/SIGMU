@@ -11,6 +11,11 @@ class IndexController {
       const user = req.session
       return res.status(200).render("home", {user});
     }
+
+    carFineFormRender(req, res) {
+      const user = req.session
+      return res.status(200).render("carFineForm", {user});
+    }
 }
 
 export const indexController = new IndexController();

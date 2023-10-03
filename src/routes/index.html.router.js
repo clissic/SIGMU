@@ -9,6 +9,8 @@ indexRouter.get("/login", indexController.loginRender)
 
 indexRouter.get("/home", indexController.homeRender)
 
+indexRouter.get("/carFineForm", indexController.carFineFormRender)
+
 /* indexRouter.get("/recover-form", indexController.recoverRender)
 
 indexRouter.post("/recover-form", indexController.recoverPass)

@@ -52,7 +52,7 @@ class CarFinesService {
                 return lastFine.fine_number !== undefined ? lastFine.fine_number + 1 : 1;
             }
         }
-      const carFineCreated = new carFinesModel.create({
+      const carFineCreated = await carFinesModel.create({
         fine_number: await getCarFineNumber(),
         fine_date,
         fine_time,
@@ -84,3 +84,5 @@ class CarFinesService {
     }
   }
 }
+
+export const carFinesServices = new CarFinesService();

@@ -243,3 +243,18 @@ a:visited {
 #btnLI:active {
   background-color: #003754;
 }
+
+/* ERROR PAGE */
+
+#image404 {
+  width: 20%;
+}
+
+.notFoundCont {
+  margin: 2vh 0 2vh 0;
+  display: flex;
+  flex-direction: row;
+  column-gap: 6vw;
+  align-items: center;
+  justify-content: center;
+}

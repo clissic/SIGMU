@@ -4,8 +4,8 @@ import { sessionsController } from "../controllers/sessions.controller.js";
 
 export const sessionsRouter = express.Router();
 
-sessionsRouter.post("/signup", passport.authenticate('register', { failureRedirect: '/error-auth' }), sessionsController.signup);
+sessionsRouter.post("/signup", passport.authenticate('register', { failureRedirect: '/' }), sessionsController.signup);
 
-sessionsRouter.post("/login", passport.authenticate('login', { failureRedirect: '/error-auth' }), sessionsController.login);
+sessionsRouter.post("/login", passport.authenticate('login', { failureRedirect: '/login' }), sessionsController.login);
 
 sessionsRouter.get("/logout", sessionsController.logout)
