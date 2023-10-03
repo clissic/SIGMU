@@ -1,7 +1,7 @@
 import { isValidPassword } from "../../utils/Bcrypt.js";
 import { UserMongoose } from "./mongoose/users.mongoose.js";
 
-export default class UsersModel {
+class UsersModel {
   async getAll() {
     const users = await UserMongoose.find(
       {},

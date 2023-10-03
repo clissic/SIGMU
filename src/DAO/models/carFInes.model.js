@@ -9,7 +9,7 @@ async function getNextFineNumber() {
   }
 }
 
-export default class CarFinesModel {
+class CarFinesModel {
   async getAll() {
     const carFines = await CarFinesMongoose.find(
       {},
@@ -99,5 +99,13 @@ export default class CarFinesModel {
       owner_tel,
       owner_dir,
     });
+    return carFineCreated;
+  }
+
+  async deleteOne(id) {
+    const carFineDeleted = await CarFinesMongoose.deleteOne({_id: id});
+    return carFineDeleted;
   }
 }
+
+export const carFinesModel = new CarFinesModel();
