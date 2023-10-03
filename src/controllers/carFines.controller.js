@@ -59,7 +59,7 @@ class CarFinesController {
 
     async create(req, res) {
         try {
-            const fine_author = req.session
+            const fine_author = req.session.user.email
             const {fine_date,
                 fine_time,
                 fine_article,
@@ -73,7 +73,6 @@ class CarFinesController {
                 owner_name,
                 owner_tel,
                 owner_dir} = req.body;
-            logger.info(JSON.stringify(req.session))
             const carFineDTO = new CarFineDTO(fine_date, fine_time, fine_article, fine_amount, fine_extra_amount, fine_author, fine_proves, car_brand, car_model, car_reg_number, owner_ci, owner_name, owner_tel, owner_dir);
             const carFineCreated = await carFinesServices.create(carFineDTO);
             if (carFineCreated) {
