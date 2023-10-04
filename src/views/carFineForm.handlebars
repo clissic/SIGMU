@@ -1,61 +1,95 @@
-<div class="body">
-  <form action="/api/carFines/create">
-    <h6>Datos de la multa (obligatorio):</h6>
-    <label for="fine_date">Fecha:</label>
-    <input type="date" id="fine_date" name="fine_date" required />
-    <div class="form-group">
-      <label for="fine_time">Hora:</label>
-      <input type="time" id="fine_time" name="fine_time" required />
+<div id="body">
+  <div id="header">
+    <img id="cornerLogo" src="./img/cintaPNN.png" alt="img PNN" />
+    <div id="headerTitle">
+      <h1 id="mainTitle">SIGMU</h1>
+      <h3>Sistema de Gestión de Multas</h3>
+      <p>Prefectura del Puerto de Montevideo</p>
     </div>
-    <div class="form-group">
-      <label for="fine_article">N° Artículo:</label>
-      <input type="text" id="fine_article" name="fine_article" required />
+    <div id="loginCont">
+      <p>Bienvenido:</p>
+      <a href="#"><strong class="userName">{{user.rank}} {{user.first_name}} {{user.last_name}}</strong></a>
+      <p>Rol: <strong>{{user.role}}</strong></p>
+      <input id="btnLogout" type="submit" value="CERRAR SESIÓN" id="addProductSubmitBtn" />
     </div>
-    <div class="form-group">
-      <label for="fine_amount">U.R.:</label>
-      <input type="number" id="fine_amount" name="fine_amount" required></input>
-    </div>
-    <div class="form-group">
-      <label for="fine_extra_amount">Extra U.R.<span>*</span>:</label>
-      <input type="text" id="fine_extra_amount" name="fine_extra_amount" required />
-    </div>
-    <div class="form-group">
-        <input type="hidden" id="fine_author" value={{user.email}} />
-    </div>
-    <div class="form-group">
-      <label for="fine_proves">Pruebas<span>**</span>:</label>
-      <input type="text" id="fine_proves" name="fine_proves" required />
-    </div>
-    <h6>Datos del vehículo (obligatorio):</h6>
-    <div class="form-group">
-      <label for="car_brand">Marca:</label>
-      <input type="text" id="car_brand" name="car_brand" required />
-    </div>
-    <div class="form-group">
-      <label for="car_model">Modelo:</label>
-      <input type="text" id="car_model" name="car_model" required />
-    </div>
-    <div class="form-group">
-      <label for="car_reg_number">Matrícula:</label>
-      <input type="number" id="car_reg_number" name="car_reg_number" required />
-    </div>
-    <h6>Datos del propietario:</h6>
-    <div class="form-group">
-      <label for="owner_ci">C.I.:</label>
-      <input type="text" id="owner_ci" name="owner_ci"/>
-    </div>
-    <div class="form-group">
-      <label for="owner_name">Nombre:</label>
-      <input type="text" id="owner_name" name="owner_name"/>
-    </div>
-    <div class="form-group">
-      <label for="owner_tel">Teléfono:</label>
-      <input type="tel" id="owner_tel" name="owner_tel"/>
-    </div>
-    <div class="form-group">
-      <label for="owner_dir">Matrícula:</label>
-      <input type="text" id="owner_dir" name="owner_dir"/>
-    </div>
-    <input type="submit" value="Submit" id="addProductSubmitBtn" />
-  </form>
+  </div>
+  <div>
+    <form class="formStyle" action="/api/carFines/create" method="post">
+    <h3 class="formTitle">NUEVA MULTA PARA VEHÍCULO TERRESTRE:</h3>
+      <p class="formSubTitle">Datos de la multa<span class="formAst">*</span>:</p>
+      <div class="formGroup">
+        <label for="fine_date">Fecha:</label>
+        <input class="formInput" type="date" id="fine_date" name="fine_date" required />
+      </div>
+      <div class="formGroup">
+        <label for="fine_time">Hora:</label>
+        <input class="formInput" type="time" id="fine_time" name="fine_time" required />
+      </div>
+      <div class="formGroup">
+        <label for="fine_article">N° Artículo:</label>
+        <input class="formInput" type="text" id="fine_article" name="fine_article" required />
+      </div>
+      <div class="formGroup">
+        <label for="fine_amount">Cantidad U.R.:</label>
+        <input class="formInput" type="text" id="fine_amount" name="fine_amount" placeholder="Se obtiene del artículo seleccionado..." required />
+      </div>
+      <div class="formGroup">
+        <label for="fine_extra_amount">Cantidad extra U.R.:</label>
+        <input class="formInput"
+          type="text"
+          id="fine_extra_amount"
+          name="fine_extra_amount"
+          placeholder="Llenar solo en caso de que el artículo permita ampliar el monto de la multa..."
+          required
+        />
+      </div>
+{{!--       <div>
+        <input class="formInput" type="hidden" id="fine_author" value={{user.email}} />
+      </div> --}}
+      <div class="formGroup">
+        <label for="fine_proves">Pruebas:</label>
+        <input class="formInput" type="text" id="fine_proves" name="fine_proves" placeholder="Link a la carpeta de archivos en la nube..." required />
+      </div>
+      <p class="formSubTitle">Datos del vehículo<span class="formAst">*</span>:</p>
+      <div class="formGroup">
+        <label for="car_brand">Marca:</label>
+        <input class="formInput" type="text" id="car_brand" name="car_brand" placeholder="Ej.: Renault..." />
+      </div>
+      <div class="formGroup">
+        <label for="car_model">Modelo:</label>
+        <input class="formInput" type="text" id="car_model" name="car_model" placeholder="Ej.: Sandero RS 2.0L..." required />
+      </div>
+      <div class="formGroup">
+        <label for="car_reg_number">Matrícula:</label>
+        <input class="formInput"
+          type="number"
+          id="car_reg_number"
+          name="car_reg_number"
+          placeholder="Ej.: ABC1234..."
+          required
+        />
+      </div>
+      <p class="formSubTitle">Datos del propietario:</p>
+      <div class="formGroup">
+        <label for="owner_ci">C.I.:</label>
+        <input class="formInput" type="text" id="owner_ci" name="owner_ci" placeholder="Ej.: 12345678..." />
+      </div>
+      <div class="formGroup">
+        <label for="owner_name">Nombre:</label>
+        <input class="formInput" type="text" id="owner_name" name="owner_name" placeholder="Ej.: José Pérez..."/>
+      </div>
+      <div class="formGroup">
+        <label for="owner_tel">Teléfono:</label>
+        <input class="formInput" type="tel" id="owner_tel" name="owner_tel" placeholder="Ej.: 091234567 o 20151234..."/>
+      </div>
+      <div class="formGroup">
+        <label for="owner_dir">Dirección:</label>
+        <input class="formInput" type="text" id="owner_dir" name="owner_dir" placeholder="Ej.: 18 de Julio 1234 esq. Convención, Montevideo, Uruguay..."/>
+      </div>
+      <p class="formAst">* Datos obligatorios para crear la multa.</p>
+      <div class="submitCont">
+        <input id="formSubmit" type="submit" value="CREAR MULTA" id="addProductSubmitBtn" />
+      </div>
+    </form>
+  </div>
 </div>

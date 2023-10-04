@@ -15,7 +15,7 @@ a:visited {
 
 #body {
   display: flex;
-  margin: 5vh auto 5vh auto;
+  margin: 5vh auto 0 auto;
   flex-direction: column;
   width: 80vw;
   height: auto;
@@ -57,7 +57,7 @@ a:visited {
 
 #loginCont {
   width: 19%;
-  margin: 3vw 3% 0% 3%;
+  margin: auto 3% auto 3%;
 }
 
 #btnLogin {
@@ -86,6 +86,29 @@ a:visited {
 
 #btnLogin:active {
   background-color: #003754;
+}
+
+#btnLogout {
+  width: auto;
+  padding: 6px 13px 6px 13px;
+  border: none;
+  border-radius: 12px;
+  background-color: #bf0000;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.15) 1px 1px 10px 1px;
+  transition: all 0.2s;
+  color: white;
+  margin-top: 10px;
+}
+
+#btnLogout:hover {
+  background-color: #8f0000;
+}
+
+#btnLogout:active {
+  background-color: #540000;
 }
 
 #btnRequest {
@@ -187,7 +210,7 @@ a:visited {
 
 #footer {
   padding-top: 2vh;
-  margin: 6vh 0 6vh 0;
+  margin: 2vh 0 3vh 0;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -251,10 +274,83 @@ a:visited {
 }
 
 .notFoundCont {
-  margin: 2vh 0 2vh 0;
+  margin: 7vh 0 7vh 0;
   display: flex;
   flex-direction: row;
   column-gap: 6vw;
   align-items: center;
   justify-content: center;
+}
+
+.formStyle {
+  margin: 4vh auto 8vh auto;
+  width: 40vw;
+}
+
+.formTitle {
+  text-align: center;
+}
+
+.formSubTitle {
+  margin: 10px 0 10px 0;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0 10px 0;
+}
+
+.formInput {
+  height: 30px;
+  padding: 0 10px 0 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 10px 1px;
+}
+
+.submitCont {
+  display: flex;
+  align-items: center;
+}
+
+#formSubmit {
+  width: auto;
+  padding: 8px 16px 8px 16px;
+  border: none;
+  border-radius: 12px;
+  background-color: #007dbf;
+  color: white;
+  font-weight: 600;
+  font-size: medium;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.15) 1px 1px 10px 1px;
+  transition: all 0.2s;
+  color: white;
+  margin: 40px auto 0 auto;
+}
+
+#formSubmit:hover {
+  background-color: #005d8f;
+}
+
+#formSubmit:active {
+  background-color: #003754;
+}
+
+.formAst {
+  color: red;
+  font-weight: 600;
+}
+
+.userName {
+  font-size: larger;
+  color: black;
+}
+
+.userName:hover {
+  text-decoration: underline;
 }
