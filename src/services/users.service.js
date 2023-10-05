@@ -5,7 +5,7 @@ class UserService {
     try {
       return await usersModel.getAll();
     } catch (error) {
-      throw new Error("Failed to find users");
+      throw new Error("Failed to find users: " + error);
     }
   }
 
@@ -13,26 +13,28 @@ class UserService {
     try {
       return await usersModel.findById(id);
     } catch (error) {
-      throw new Error("Failed to find user by ID");
+      throw new Error("Failed to find user by ID: " + error);
     }
   }
 
-  async create({ first_name, last_name, rank, email, password }) {
+  async create({ avatar, first_name, last_name, rank, email, password }) {
     try {
       return await usersModel.create({
+        avatar,
         first_name,
         last_name,
         rank,
         email,
         password,
       });
-    } catch {
-      throw new Error("Failed to create a user");
+    } catch (error) {
+      throw new Error("Failed to create a user: " + error);
     }
   }
 
   async updateOne({
     _id,
+    avatar,
     first_name,
     last_name,
     rank,
@@ -43,6 +45,7 @@ class UserService {
     try {
       return await usersModel.updateOne({
         _id,
+        avatar,
         first_name,
         last_name,
         rank,
@@ -59,7 +62,7 @@ class UserService {
     try {
       return await usersModel.deleteOne({ _id });
     } catch (error) {
-      throw new Error("Failed to delete user by ID");
+      throw new Error("Failed to delete user by ID: " + error);
     }
   }
 
@@ -67,15 +70,23 @@ class UserService {
     try {
       return await usersModel.findByEmail(email);
     } catch (error) {
-      throw new Error("Failed to find user by email");
+      throw new Error("Failed to find user by email: " + error);
     }
   }
 
-  async updatePassword(email, newPassword) {
+  async updatePassword({email, newPassword}) {
     try {
       return await usersModel.updatePassword({ email, newPassword });
     } catch(error) {
-      throw new Error("Failed to update password");
+      throw new Error("Failed to update password: " + error);
+    }
+  }
+
+  async updateFines({_id, fines}) {
+    try {
+      return await usersModel.updateFines({_id, fines})
+    } catch (error) {
+      throw new Error("Failed to update fines: " + error)
     }
   }
 }

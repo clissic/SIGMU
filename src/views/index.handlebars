@@ -1,44 +1,54 @@
-    <div id="body">
-      <div id="header">
-        <img id="cornerLogo" src="./img/cintaPNN.png" alt="img PNN" />
-        <div id="headerTitle">
-          <h1 id="mainTitle">SIGMU</h1>
-          <h3>Sistema de Gestión de Multas</h3>
-          <p>Prefectura del Puerto de Montevideo</p>
-        </div>
-        <div id="loginCont">
-          <button id="btnLogin"><a href="/login">INGRESAR</a></button>
-          <div class="dropdown">
-            <button id="btnRequest">SOLICITAR</button>
-            <div class="dropdownRegCont">
-              <a href="#">NUEVA CUENTA</a>
-              <a href="#">CONTRASEÑA</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="subBody">
-        <label style="visibility: hidden" for="searchBar">Buscar por:</label>
-        <input
-          style="visibility: hidden"
-          type="search"
-          name="searchBar"
-          id="searchBar"
-          placeholder="Matrícula, N° OMI, artículo, monto, agencia marítima, propietario, armador, etc..."
-        />
-        <div id="subBodyText">
-          <h4>Acerca de SIGMU:</h4>
-          <p>
-            El Sistema de Gestión de Multas para la Prefectura del Puerto de
-            Montevideo (SIGMU en adelante) es un sistema de uso reservado para
-            el personal especialmente autorizado de la Armada Nacional. Las
-            cuentas SIGMU son de uso personal, por lo que cada tripulante
-            deberá solicitar y eventualmente justificar la creación de su
-            cuenta. Queda terminantemente prohibido el uso compartido de
-            cuentas SIGMU. Es necesario aclarar que el sistema podrá ser auditado sin
-            previo aviso en cualquiera de sus áreas. El mal uso de SIGMU será
-            considerado como sanción grave.
-          </p>
-        </div>
-      </div>
+<div id="body">
+  <div id="header">
+    <img id="cornerLogo" src="./img/cintaPNN.png" alt="img PNN" />
+    <div id="headerTitle">
+      <a href="/index"><h1 id="mainTitle">SIGMU</h1></a>
+      <h3>Sistema de Gestión de Multas</h3>
+      <p>Prefectura del Puerto de Montevideo</p>
     </div>
+    <div id="loginCont">
+      <p>Bienvenido:
+        <a href="/home"><strong class="userName">{{user.rank}}
+            {{user.first_name}}
+            {{user.last_name}}</strong></a></p>
+      <p>Rol: <strong id="readRole">{{user.role}}</strong></p>
+      <a id="btnLogout" href="/api/sessions/logout">CERRAR SESIÓN</a>
+    </div>
+  </div>
+  <div id="subBody">
+    <label style="visibility: hidden" for="searchBar">Buscar por:</label>
+    <input
+      style="visibility: hidden"
+      type="search"
+      name="searchBar"
+      id="searchBar"
+      placeholder="Matrícula, N° OMI, artículo, monto, agencia marítima, propietario, armador, etc..."
+    />
+    <div id="subBodyText">
+      <h4>Acerca de SIGMU:</h4>
+      <p>
+        El Sistema de Gestión de Multas para la Prefectura del Puerto de
+        Montevideo
+        <strong>(en adelante SIGMU)</strong>
+        es un sistema de uso reservado para el personal especialmente autorizado
+        de la Armada Nacional. Las cuentas SIGMU son de uso personal, por lo que
+        cada tripulante deberá solicitar y eventualmente justificar la creación
+        de su cuenta. Queda terminantemente prohibido el uso compartido de
+        cuentas SIGMU. Es necesario aclarar que el sistema podrá ser auditado
+        sin previo aviso en cualquiera de sus áreas. El mal uso de SIGMU será
+        considerado como sanción grave.
+      </p>
+      <h4>Política de datos personales:</h4>
+      <p>Los datos recabados en SIGMU son
+        <strong>RESERVADOS</strong>. Nuestra política de datos personales en
+        relación con las multas se centra en la protección y el uso responsable
+        de la información. El sistema recopila datos como nombres, direcciones,
+        números de identificación, etc., únicamente con el propósito de
+        gestionar multas y cumplir con las obligaciones legales. Estos datos se
+        almacenan de manera segura y no se comparten de ninguna manera con
+        agentes externos a la Armada Nacional. Jamás se utilizará esta
+        información para otros fines. Mantenemos la confidencialidad y la
+        integridad de los registros, garantizando así la privacidad y seguridad.</p>
+    </div>
+  </div>
+</div>

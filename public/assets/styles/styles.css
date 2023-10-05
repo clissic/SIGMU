@@ -17,7 +17,7 @@ a:visited {
   display: flex;
   margin: 5vh auto 0 auto;
   flex-direction: column;
-  width: 80vw;
+  width: 82vw;
   height: auto;
   min-height: 90vh;
   border-radius: 50px;
@@ -45,6 +45,7 @@ a:visited {
   width: auto;
   font-size: 6vw;
   text-align: center;
+  color: black;
 }
 
 #headerTitle h3 {
@@ -58,6 +59,8 @@ a:visited {
 #loginCont {
   width: 19%;
   margin: auto 3% auto 3%;
+  display: flex;
+  flex-direction: column;
 }
 
 #btnLogin {
@@ -89,6 +92,7 @@ a:visited {
 }
 
 #btnLogout {
+  text-align: center;
   width: auto;
   padding: 6px 13px 6px 13px;
   border: none;
@@ -100,7 +104,7 @@ a:visited {
   box-shadow: rgba(0, 0, 0, 0.15) 1px 1px 10px 1px;
   transition: all 0.2s;
   color: white;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 #btnLogout:hover {
@@ -243,7 +247,7 @@ a:visited {
   margin: auto;
 }
 
-#btnLI {
+.btnLI {
   width: 100%;
   max-width: 10vw;
   padding: 8px 16px 8px 16px;
@@ -259,17 +263,21 @@ a:visited {
   color: white;
 }
 
-#btnLI:hover {
+.btnLI:hover {
   background-color: #005d8f;
 }
 
-#btnLI:active {
+.btnLI:active {
   background-color: #003754;
+}
+
+.alrLoged {
+  margin-bottom: 20px;
 }
 
 /* ERROR PAGE */
 
-#image404 {
+#msgImg {
   width: 20%;
 }
 
@@ -353,4 +361,216 @@ a:visited {
 
 .userName:hover {
   text-decoration: underline;
+}
+
+.linkDec100 {
+  font-size: small;
+  color: grey;
+  text-align: right;
+  margin-top: 5px;
+}
+
+.linkDec100:hover {
+  text-decoration: underline;
+}
+
+#backButton {
+  width: 100%;
+  text-align: center;
+  padding: 8px 16px 8px 16px;
+  border: none;
+  border-radius: 12px;
+  background-color: #007dbf;
+  color: white;
+  font-weight: 600;
+  font-size: medium;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.15) 1px 1px 10px 1px;
+  transition: all 0.2s;
+  color: white;
+}
+
+#backButton:hover {
+  background-color: #005d8f;
+}
+
+#backButton:active {
+  background-color: #003754;
+}
+
+#errorLink {
+  text-align: center;
+  color: gray;
+}
+
+#errorLink a:hover {
+  text-decoration: underline;
+}
+
+/* HOME PROFILE */
+
+.homeBody {
+  padding: 5vh 5vw 5vh 5vw;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-areas: "user cards";
+}
+
+.categoriesBody {
+  width: 60vw;
+  grid-area: cards;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2vh;
+}
+
+.categoriesBody h3 {
+  width: 90%;
+  margin: auto;
+}
+
+.categoryCont {
+  display: flex;
+  flex: row;
+  column-gap: 2vw;
+  margin-bottom: 3vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.userInfo {
+  width: 12vw;
+  grid-area: user;
+  background-color: white;
+  padding: 1vw;
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 10px 1px;
+  height: fit-content;
+}
+
+.userInfo img {
+  width: 100%;
+  margin: auto;
+}
+
+.userInfoGroup {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2vh;
+  width: auto;
+}
+
+.userInfoBtn {
+  width: 100%;
+  font-size: .8vw;
+  text-align: center;
+  padding: 10px 0px 10px 0px;
+  border-radius: 10px;
+  background-color: #007dbf;
+  color: white;
+  transition: all 0.2s;
+  font-weight: 600;
+}
+
+.userInfoBtn:hover {
+  background-color: #005d8f;
+  color: white;
+}
+
+.userInfoBtn:active {
+  background-color: #003754;
+  color: white;
+}
+
+.categoryCard {
+  width: 12.2vw;
+  display: grid;
+  grid-template-rows: 4fr 1fr;
+  height: 15vw;
+  border-radius: 25px;
+  transition: 0.5s;
+  box-shadow: rgba(0, 0, 0, 0.15) 1px 1px 10px 1px;
+  align-items: center;
+}
+
+.categoryCard:hover {
+  translate: 0px -5px 0px;
+  box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 10px 1px;
+  cursor: pointer;
+}
+
+.categoryCard p {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 0 0 25px 25px;
+  text-align: center;
+  height: 100%;
+  font-weight: 600;
+  font-size: large;
+}
+
+#createCarFineCard {
+  background-image: url(../../img/createFineCard.jpg);
+  background-size: cover;
+}
+
+#updateCarFineCard {
+  background-image: url(../../img/updateFineCard.jpg);
+  background-size: cover;
+}
+
+#deleteCarFineCard {
+  background-image: url(../../img/deleteFineCard.jpg);
+  background-size: cover;
+}
+
+#readCarFineCard {
+  background-image: url(../../img/readFineCard.jpg);
+  background-size: cover;
+}
+
+#createShipFineCard {
+  background-image: url(../../img/createFineCard2.jpg);
+  background-size: cover;
+}
+
+#updateShipFineCard {
+  background-image: url(../../img/updateFineCard2.jpg);
+  background-size: cover;
+}
+
+#deleteShipFineCard {
+  background-image: url(../../img/deleteFineCard2.jpg);
+  background-size: cover;
+}
+
+#readShipFineCard {
+  background-image: url(../../img/readFineCard2.jpg);
+  background-size: cover;
+}
+
+#createUserCard {
+  background-image: url(../../img/createUserCard.jpg);
+  background-size: cover;
+}
+
+#readUserCard {
+  background-image: url(../../img/readUserCard.jpg);
+  background-size: cover;
+}
+
+#updateUserCard {
+  background-image: url(../../img/updateUserCard.jpg);
+  background-size: cover;
+}
+
+#deleteUserCard {
+  background-image: url(../../img/deleteUserCard.jpg);
+  background-size: cover;
+}
+
+.disabled {
+  filter: contrast(0.2) blur(3px) !important;
+  translate: 0px 0px 0px !important;
+  cursor: auto !important;
 }

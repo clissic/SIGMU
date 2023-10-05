@@ -1,6 +1,7 @@
 import { Schema, model } from "mongoose";
 
 const schema = new Schema({
+  avatar: { type: String, default: "./img/avatar.png" },
   first_name: { type: String, required: true, max: 100 },
   last_name: { type: String, required: true, max: 100 },
   rank: { type: String, required: true, max: 5},

@@ -44,8 +44,9 @@ class UsersController {
 
   async create(req, res) {
     try {
-      const { first_name, last_name, rank, email, password } = req.body;
+      const { avatar, first_name, last_name, rank, email, password } = req.body;
       const userDTO = new UserDTO(
+        avatar,
         first_name,
         last_name,
         rank,
@@ -80,7 +81,7 @@ class UsersController {
   async updateOne(req, res) {
     try {
       const { _id } = req.params;
-      const { first_name, last_name, email } = req.body;
+      const { avatar, first_name, last_name, email } = req.body;
       if (!first_name || !last_name || !email || !_id) {
         logger.info(
           "Validation error: please complete firstName, lastName and email."
@@ -94,6 +95,7 @@ class UsersController {
       try {
         const userUpdated = await userService.updateOne({
           _id,
+          avatar,
           first_name,
           last_name,
           email,
@@ -143,7 +145,7 @@ class UsersController {
         });
       } else {
         return res.status(404).json({
-          status: "error",
+          status: "failed",
           msg: "User not found",
           payload: {},
         });
@@ -153,6 +155,34 @@ class UsersController {
       return res.status(500).json({
         status: "error",
         msg: "Something went wrong",
+        payload: {},
+      });
+    }
+  }
+
+  async updatePassword(req, res) {
+    try {
+      const email = req.session.user.email;
+      const password = req.body;
+      const userUpdated = await userService.updatePassword({email, password})
+      if (userUpdated) {
+        return res.status(200).json({
+          status: "success",
+          msg: "Password updated",
+          payload: {},
+        });
+      } else {
+        return res.status(400).json({
+          status: "failed",
+          msg: "Password could not be updated",
+          payload: {},
+        });
+      }
+    } catch (e) {
+      logger.info(e);
+      return res.status(500).json({
+        status: "error",
+        msg: "Something went wrong " + e,
         payload: {},
       });
     }

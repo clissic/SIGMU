@@ -40,13 +40,14 @@ export function iniPassport() {
       },
       async (req, username, password, done) => {
         try {
-          const { first_name, last_name, rank, email, password } = req.body;
+          const { avatar, first_name, last_name, rank, email, password } = req.body;
           let user = await UserMongoose.findOne({ email: username });
           if (user) {
             logger.info("User already exists");
             return done(null, false);
           }
           const newUser = {
+            avatar: avatar || "./img/avatar.png",
             first_name,
             last_name,
             rank,

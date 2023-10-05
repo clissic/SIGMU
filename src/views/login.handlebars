@@ -1,27 +1,49 @@
 <div id="body">
-      <div id="header">
-        <img id="cornerLogo" src="./img/cintaPNN.png" alt="img PNN" />
-        <div id="headerTitle">
-          <h1 id="mainTitle">SIGMU</h1>
-          <h3>Sistema de Gestión de Multas</h3>
-          <p>Prefectura del Puerto de Montevideo</p>
-        </div>
-        <div id="loginCont">
-        </div>
-      </div>
-      <div id="subBody">
-        <form id="loginForm" action="/api/sessions/login" method="post">
-            <p>Ingrese sus credenciales:</p>
-            <input type="email" name="email" id="email" placeholder="Email..." required>
-            <input type="password" name="password" id="password" placeholder="Password..." required>
-            <button  type="submit" id="btnLI">INGRESAR</button>
-            <div class="dropdown">
-            <button id="btnRequest">SOLICITAR</button>
-            <div class="dropdownRegCont">
-              <a href="#">NUEVA CUENTA</a>
-              <a href="#">CONTRASEÑA</a>
-            </div>
-          </div>
-        </form>
-      </div>
+  <div id="header">
+    <img id="cornerLogo" src="./img/cintaPNN.png" alt="img PNN" />
+    <div id="headerTitle">
+      <a href="/index"><h1 id="mainTitle">SIGMU</h1></a>
+      <h3>Sistema de Gestión de Multas</h3>
+      <p>Prefectura del Puerto de Montevideo</p>
     </div>
+    <div id="loginCont">
+    </div>
+  </div>
+  <div id="subBody">
+    {{#if user}}
+      <div class="notFoundCont">
+        <img id="msgImg" src="/img/checked.png" alt="checked" />
+        <div>
+      <h3 class="alrLoged">Usted ya esta logeado como {{user.rank}} {{user.first_name}} {{user.last_name}}</h3>
+      <a class="btnLI" href="/home">PANEL DE USUARIO</a>
+    </div>
+    {{/if}}
+    {{#unless user}}
+    <form id="loginForm" action="/api/sessions/login" method="post">
+      <p>Ingrese sus credenciales:</p>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Email..."
+        required
+      />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password..."
+        required
+      />
+      <button type="submit" class="btnLI">INGRESAR</button>
+      <div class="dropdown">
+        <button id="btnRequest">SOLICITAR</button>
+        <div class="dropdownRegCont">
+          <a href="#">NUEVA CUENTA</a>
+          <a href="#">CONTRASEÑA</a>
+        </div>
+      </div>
+    </form>
+    {{/unless}}
+  </div>
+</div>

@@ -1,15 +1,18 @@
 import express from "express";
 import { indexController } from "../controllers/index.controller.js";
+import { alreadyLogged, checkLogin } from "../middlewares/auth.js";
 
 export const indexRouter = express.Router();
 
-indexRouter.get("/", indexController.indexRender);
+indexRouter.get("/index", checkLogin, indexController.indexRender);
 
-indexRouter.get("/login", indexController.loginRender)
+indexRouter.get("/", alreadyLogged, indexController.loginRender)
 
-indexRouter.get("/home", indexController.homeRender)
+indexRouter.get("/home", checkLogin, indexController.homeRender)
 
-indexRouter.get("/carFineForm", indexController.carFineFormRender)
+indexRouter.get("/carFineForm", checkLogin, indexController.carFineFormRender)
+
+indexRouter.get("/success", checkLogin, indexController.successRender)
 
 /* indexRouter.get("/recover-form", indexController.recoverRender)
 

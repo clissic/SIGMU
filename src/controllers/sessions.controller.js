@@ -13,7 +13,7 @@ class SessionsController {
       rank: req.user.rank,
       role: req.user.role,
     };
-    return res.redirect("/login");
+    return res.redirect("/");
   }
 
   async login(req, res) {
@@ -25,11 +25,13 @@ class SessionsController {
       }
       req.session.user = {
         _id: req.user._id,
+        avatar: req.user.avatar,
         email: req.user.email,
         first_name: req.user.first_name,
         last_name: req.user.last_name,
         rank: req.user.rank,
         role: req.user.role,
+        fines: req.user.fines,
       };
       return res.redirect("/home");
     } catch (err) {
@@ -47,17 +49,6 @@ class SessionsController {
       }
       res.redirect("/");
     });
-  }
-
-  githubCallback(req, res) {
-    req.session.email = req.user.email;
-    req.session.first_name = req.user.first_name;
-    req.session.last_name = req.user.last_name;
-    req.session.age = req.user.age;
-    req.session.role = req.user.role;
-    req.session.avatar = req.user.avatar;
-    req.session.cartId = req.user.cartId;
-    res.redirect("/products");
   }
 }
 

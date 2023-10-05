@@ -7,20 +7,14 @@
       <p>Prefectura del Puerto de Montevideo</p>
     </div>
     <div id="loginCont">
-      <div class="submitCont">
-        <a id="backButton" href="javascript:history.back()">VOLVER</a>
-      </div>
-      {{#if user}}
-        <a id="btnLogout" href="/api/sessions/logout">CERRAR SESIÓN</a>
-      {{/if}}
     </div>
   </div>
   <div class="notFoundCont">
-    <img id="msgImg" src="/img/404.png" alt="404" />
+    <img id="image404" src="/img/checked.png" alt="checked" />
     <div>
-      <h3>Algo salió mal...</h3>
+      <h3>¡Operación realizada con éxito!</h3>
       <p>{{msg}}</p>
     </div>
   </div>
-  <p id="errorLink">Para reportar errores siga este <a href="#">link</a>.</p>
+  <script src="/assets/js/redirect.js"></script>
 </div>

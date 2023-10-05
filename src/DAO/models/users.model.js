@@ -7,6 +7,7 @@ class UsersModel {
       {},
       {
         _id: true,
+        avatar: true,
         first_name: true,
         last_name: true,
         rank: true,
@@ -28,6 +29,7 @@ class UsersModel {
       { email: email },
       {
         _id: true,
+        avatar: true,
         first_name: true,
         last_name: true,
         rank: true,
@@ -49,6 +51,7 @@ class UsersModel {
       { email: email },
       {
         _id: true,
+        avatar: true,
         first_name: true,
         last_name: true,
         rank: true,
@@ -61,8 +64,9 @@ class UsersModel {
     return user;
   }
 
-  async create({ first_name, last_name, rank, email, password, role, fines }) {
+  async create({ avatar, first_name, last_name, rank, email, password, role, fines }) {
     const userCreated = await UserMongoose.create({
+      avatar,
       first_name,
       last_name,
       rank,
@@ -76,6 +80,7 @@ class UsersModel {
 
   async updateOne({
     _id,
+    avatar,
     first_name,
     last_name,
     rank,
@@ -89,6 +94,7 @@ class UsersModel {
         _id: _id,
       },
       {
+        avatar,
         first_name,
         last_name,
         rank,
@@ -106,13 +112,26 @@ class UsersModel {
     return result;
   }
 
-  async updatePassword(email, newPassword) {
+  async updatePassword({email, newPassword}) {
     const userUpdated = await UserMongoose.updateOne(
       { email: email },
       {
         password: newPassword,
       }
     );
+    return userUpdated
+  }
+
+  async updateFines({_id, fines}){
+    const userUpdated = await UserMongoose.updateOne(
+      {
+        _id: _id,
+      },
+      {
+        fines
+      }
+    );
+    return userUpdated;
   }
 }
 

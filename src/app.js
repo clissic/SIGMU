@@ -71,7 +71,8 @@ app.use("/api/carFines", carFinesRouter);
 app.use("/", indexRouter);
 
 app.get("*", (req, res) => {
+  const user = req.session.user;
   return res
     .status(404)
-    .render("errorPage", {msg: "Error 404, página no encontrada."})
+    .render("errorPage", {msg: "Error 404, página no encontrada.", user})
 });
