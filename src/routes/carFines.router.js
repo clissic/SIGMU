@@ -12,4 +12,4 @@ carFinesRouter.post("/create", carFinesController.create);
 
 carFinesRouter.delete("/:id", carFinesController.deleteOne);
 
-carFinesRouter.post("/createAndRender", checkLogin, carFinesController.createAndRender)
+carFinesRouter.post("/createAndRender", checkLogin, carFinesController.createAndRender);

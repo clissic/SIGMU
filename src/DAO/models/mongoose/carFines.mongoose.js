@@ -9,6 +9,7 @@ const schema = new Schema({
   fine_extra_amount: { type: Number, default: 0 },
   fine_author: { type: String, required: true },
   fine_proves: { type: String, required: true },
+  fine_status: { type: Boolean, default: false },
   car_brand: { type: String, required: true },
   car_model: { type: String, required: true },
   car_reg_number: { type: String, required: true},

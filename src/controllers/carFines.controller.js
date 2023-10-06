@@ -81,7 +81,7 @@ class CarFinesController {
                     status: "success",
                     msg: "Car fine created",
                     payload: carFineCreated,
-                }).render("success", {msg: "¡Multa creada con éxito! Redireccionando al panel de control de usuario en breve..."});
+                });
             } else {
                 return res.status(400).json({
                     status: "failed",

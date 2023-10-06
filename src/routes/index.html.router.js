@@ -14,9 +14,11 @@ indexRouter.get("/carFineForm", checkLogin, indexController.carFineFormRender)
 
 indexRouter.get("/success", checkLogin, indexController.successRender)
 
-/* indexRouter.get("/recover-form", indexController.recoverRender)
+indexRouter.get("/userFines", checkLogin, indexController.userFinesRender);
 
-indexRouter.post("/recover-form", indexController.recoverPass)
+indexRouter.get("/newAccountForm", indexController.newAccountRender);
+
+/* indexRouter.post("/recover-form", indexController.recoverPass)
 
 indexRouter.get("/recover-password", indexController.recoverForm)
 

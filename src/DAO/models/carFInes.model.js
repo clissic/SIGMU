@@ -106,6 +106,32 @@ class CarFinesModel {
     const carFineDeleted = await CarFinesMongoose.deleteOne({_id: id});
     return carFineDeleted;
   }
+
+  async findByEmail(email) {
+    const userFines = await CarFinesMongoose.find(
+      {email: email},
+      {
+        _id: true,
+        fine_number: true,
+        fine_date: true,
+        fine_time: true,
+        fine_article: true,
+        fine_amount: true,
+        fine_extra_amount: true,
+        fine_author: true,
+        fine_proves: true,
+        fine_status: true,
+        car_brand: true,
+        car_model: true,
+        car_reg_number: true,
+        owner_ci: true,
+        owner_name: true,
+        owner_tel: true,
+        owner_dir: true,
+      }
+    );
+    return userFines;
+  }
 }
 
 export const carFinesModel = new CarFinesModel();

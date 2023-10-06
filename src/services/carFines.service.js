@@ -43,6 +43,17 @@ class CarFinesService {
     owner_dir,
   }) {
     try {
+      async function ordenarFecha(fecha) {
+        const date = new Date(fecha);
+        if (isNaN(date.getTime())) {
+          return "Fecha inválida";
+        }
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = String(date.getFullYear() % 100).padStart(2, '0');
+        const fechaFormateada = `${day}/${month}/${year}`;
+        return fechaFormateada;
+      }
         const allFines = await carFinesModel.getAll()
         async function getCarFineNumber() {
             if (allFines.length === 0) {
@@ -54,7 +65,7 @@ class CarFinesService {
         }
       const carFineCreated = await carFinesModel.create({
         fine_number: await getCarFineNumber(),
-        fine_date,
+        fine_date: await ordenarFecha(fine_date),
         fine_time,
         fine_article,
         fine_amount,
@@ -81,6 +92,14 @@ class CarFinesService {
         return await carFinesModel.deleteOne(id)
     } catch(e) {
         throw logger.error("Failed deleting car fine by ID: " + e)
+    }
+  }
+
+  async findByEmail(email) {
+    try {
+      return await carFinesModel.findByEmail(email);
+    } catch (e) {
+      throw logger.error("Failed to get all car fines: " + e);
     }
   }
 }

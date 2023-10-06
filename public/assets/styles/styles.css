@@ -320,6 +320,15 @@ a:visited {
   box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 10px 1px;
 }
 
+.formInputTextarea {
+  height: 150px;
+  padding: 0 10px 0 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 10px 1px;
+}
+
 .submitCont {
   display: flex;
   align-items: center;
@@ -573,4 +582,44 @@ a:visited {
   filter: contrast(0.2) blur(3px) !important;
   translate: 0px 0px 0px !important;
   cursor: auto !important;
+}
+
+/* USER FINES TABLE */
+
+#userFinesBody {
+  width: 90%;
+  margin: auto;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 5vh auto 5vh auto;
+  box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 10px 1px;
+}
+
+td {
+  border: 1px solid black;
+  padding: 5px;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(128, 128, 128, .15);
+}
+
+th {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  padding: 5px;
+  text-align: center;
+}
+
+.fineBtnCell {
+  border: none;
+  background-color: black;
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
 }

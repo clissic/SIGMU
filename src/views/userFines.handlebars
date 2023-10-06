@@ -1,0 +1,74 @@
+<div id="body">
+  <div id="header">
+    <img id="cornerLogo" src="/img/cintaPNN.png" alt="img PNN" />
+    <div id="headerTitle">
+      <a href="/index"><h1 id="mainTitle">SIGMU</h1></a>
+      <h3>Sistema de Gestión de Multas</h3>
+      <p>Prefectura del Puerto de Montevideo</p>
+    </div>
+    <div id="loginCont">
+      <p>Bienvenido:
+        <a href="/home"><strong class="userName">{{user.rank}}
+            {{user.first_name}}
+            {{user.last_name}}</strong></a></p>
+      <p>Rol: <strong id="readRole">{{user.role}}</strong></p>
+      <a id="btnLogout" href="/api/sessions/logout">CERRAR SESIÓN</a>
+    </div>
+  </div>
+  <div id="userFinesBody">
+    <h2>Mis multas:</h2>
+    <table>
+      <tr>
+        <th colspan="8">Multa</th>
+        <th colspan="3">Vehículo</th>
+        <th colspan="4">Dueño</th>
+      </tr>
+      <tr>
+        <th>ID</th>
+        <th>N°</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Artículo</th>
+        <th>Monto</th>
+        <th>Monto extra</th>
+        <th>Pruebas</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Matrícula</th>
+        <th>CI / Pass</th>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Dirección</th>
+      </tr>
+      {{#each userFines}}
+        <tr>
+          <td><button
+              class="classValue fineBtnCell"
+              title="{{_id}}"
+            ><strong>ID</strong></button></td>
+          <td>{{fine_number}}</td>
+          <td>{{fine_date}}</td>
+          <td>{{fine_time}}</td>
+          <td>{{fine_article}}</td>
+          <td>{{fine_amount}}</td>
+          <td>{{fine_extra_amount}}</td>
+          <td><a
+              href="{{fine_proves}}"
+              class="fineBtnCell"
+              target="_blank"
+            ><strong>PRUEBAS</strong></a>
+          </td>
+          <td>{{car_brand}}</td>
+          <td>{{car_model}}</td>
+          <td>{{car_reg_number}}</td>
+          <td>{{owner_ci}}</td>
+          <td>{{owner_name}}</td>
+          <td>{{owner_tel}}</td>
+          <td>{{owner_dir}}</td>
+        </tr>
+      {{/each}}
+    </table>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="./assets/js/userFines.js"></script>
+</div>
