@@ -7,11 +7,6 @@ class IndexController {
     return res.status(200).render("index", { user });
   }
 
-  async loginRender(req, res) {
-    const user = req.session.user;
-    return res.status(200).render("login", { user });
-  }
-
   async homeRender(req, res) {
     const user = req.session.user;
     const finesQuantity = req.session.user.fines.length;
@@ -33,10 +28,6 @@ class IndexController {
     const user = req.session.user;
     const userFines = req.session.user.fines
     return res.status(200).render("userFines", { user, userFines })
-  }
-
-  async newAccountRender(req, res) {
-    return res.status(200).render("newAccountForm", {})
   }
 }
 

@@ -33,7 +33,7 @@ class SessionsController {
         role: req.user.role,
         fines: req.user.fines,
       };
-      return res.redirect("/home");
+      return res.redirect("/index/home");
     } catch (err) {
       logger.info(err);
       return res

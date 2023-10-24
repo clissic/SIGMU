@@ -16,6 +16,8 @@ import { indexRouter } from "./routes/index.html.router.js";
 import { usersRouter } from "./routes/users.router.js";
 import { sessionsRouter } from "./routes/sessions.router.js";
 import { carFinesRouter } from "./routes/carFines.router.js";
+import { loginRouter } from "./routes/login.html.router.js";
+import { tokensRouter } from "./routes/tokens.router.js";
 
 const app = express();
 const PORT = env.port;
@@ -36,7 +38,6 @@ app.use(
     saveUninitialized: false,
     store: MongoStore.create({
       mongoUrl: `mongodb+srv://joaquinperezcoria:${MONGO_PASSWORD}@cluster0.zye6fyd.mongodb.net/${dbName}?retryWrites=true&w=majority`,
-      mongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
     }),
     cookie: {
       maxAge: 86400000,
@@ -66,9 +67,11 @@ app.set("view engine", "handlebars");
 app.use("/api/users", usersRouter);
 app.use("/api/sessions", sessionsRouter);
 app.use("/api/carFines", carFinesRouter);
+app.use("/api/tokens", tokensRouter);
 
 // RENDERS
-app.use("/", indexRouter);
+app.use("/index", indexRouter);
+app.use("/", loginRouter);
 
 app.get("*", (req, res) => {
   const user = req.session.user;

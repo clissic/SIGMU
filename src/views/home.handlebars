@@ -2,13 +2,13 @@
   <div id="header">
     <img id="cornerLogo" src="/img/cintaPNN.png" alt="img PNN" />
     <div id="headerTitle">
-      <a href="/index"><h1 id="mainTitle">SIGMU</h1></a>
+      <a href="/index/index"><h1 id="mainTitle">SIGMU</h1></a>
       <h3>Sistema de Gestión de Multas</h3>
       <p>Prefectura del Puerto de Montevideo</p>
     </div>
     <div id="loginCont">
       <p>Bienvenido:
-        <a href="/home"><strong class="userName">{{user.rank}}
+        <a href="/index/home"><strong class="userName">{{user.rank}}
             {{user.first_name}}
             {{user.last_name}}</strong></a></p>
       <p>Rol: <strong id="readRole">{{user.role}}</strong></p>
@@ -17,7 +17,7 @@
   </div>
   <div class="homeBody">
     <div class="userInfo">
-      <img src="{{user.avatar}}" alt="profilePic" />
+      <img src="{{user.avatar}}" alt="profilePic" onerror="this.src='/img/avatar.png'"/>
       <div class="userInfoGroup">
         <label for="name"><strong>Nombre:</strong></label>
         <p id="name">{{user.first_name}} {{user.last_name}}</p>
@@ -39,7 +39,7 @@
         <p id="fines">{{finesQuantity}}</p>
       </div>
       <div class="userInfoGroup">
-        <a class="userInfoBtn" href="/userFines">MIS MULTAS</a>
+        <a class="userInfoBtn" href="/index/userFines">MIS MULTAS</a>
       </div>
       <div class="userInfoGroup">
         <a class="userInfoBtn" href="#">CAMBIAR CONTRASEÑA</a>
@@ -51,57 +51,57 @@
     <div class="categoriesBody">
       <h3>MULTAS DE VEHÍCULOS TERRESTRES:</h3>
       <div class="categoryCont">
-        <a id="createCarFineCard" class="categoryCard" href="/carFineForm">
+        <a id="createCarFineCard" class="categoryCard" href="/index/carFineForm">
           <img src="" alt="" />
           <p>CARGAR</p>
         </a>
-        <a id="readCarFineCard" class="categoryCard" href="/userFines">
+        <a id="readCarFineCard" class="categoryCard" href="/index/userFines">
           <img src="" alt="" />
           <p>CONSULTAR</p>
         </a>
-        <a id="updateCarFineCard" class="categoryCard" href="/carFineForm">
+        <a id="updateCarFineCard" class="categoryCard" href="/index/carFineForm">
           <img src="" alt="" />
           <p>MODIFICAR</p>
         </a>
-        <a id="deleteCarFineCard" class="categoryCard" href="/carFineForm">
+        <a id="deleteCarFineCard" class="categoryCard" href="/index/carFineForm">
           <img src="" alt="" />
           <p>BORRAR</p>
         </a>
       </div>
       <h3>MULTAS DE BUQUES:</h3>
       <div class="categoryCont">
-        <a id="createShipFineCard" class="categoryCard" href="/carFineForm">
+        <a id="createShipFineCard" class="categoryCard" href="/index/carFineForm">
           <img src="" alt="" />
           <p>CARGAR</p>
         </a>
-        <a id="readShipFineCard" class="categoryCard" href="/carFineForm">
+        <a id="readShipFineCard" class="categoryCard" href="/index/carFineForm">
           <img src="" alt="" />
           <p>CONSULTAR</p>
         </a>
-        <a id="updateShipFineCard" class="categoryCard" href="/carFineForm">
+        <a id="updateShipFineCard" class="categoryCard" href="/index/carFineForm">
           <img src="" alt="" />
           <p>MODIFICAR</p>
         </a>
-        <a id="deleteShipFineCard" class="categoryCard" href="/carFineForm">
+        <a id="deleteShipFineCard" class="categoryCard" href="/index/carFineForm">
           <img src="" alt="" />
           <p>BORRAR</p>
         </a>
       </div>
       <h3>GESTIÓN DE USUARIOS:</h3>
       <div class="categoryCont">
-        <a id="createUserCard" class="categoryCard" href="/carFineForm">
+        <a id="createUserCard" class="categoryCard" href="/index/carFineForm">
           <img src="" alt="" />
           <p>CREAR</p>
         </a>
-        <a id="readUserCard" class="categoryCard" href="/carFineForm">
+        <a id="readUserCard" class="categoryCard" href="/index/carFineForm">
           <img src="" alt="" />
           <p>CONSULTAR</p>
         </a>
-        <a id="updateUserCard" class="categoryCard" href="/carFineForm">
+        <a id="updateUserCard" class="categoryCard" href="/index/carFineForm">
           <img src="" alt="" />
           <p>MODIFICAR</p>
         </a>
-        <a id="deleteUserCard" class="categoryCard" href="/carFineForm">
+        <a id="deleteUserCard" class="categoryCard" href="/index/carFineForm">
           <img src="" alt="" />
           <p>BORRAR</p>
         </a>

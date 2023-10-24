@@ -14,7 +14,7 @@ export function checkLogin(req, res, next) {
 export function alreadyLogged(req, res, next) {
   const user = req.session.user;
   if (user) {
-    res.redirect("/home")
+    res.redirect("/index/home")
   } else {
     return next();
   }

@@ -112,13 +112,14 @@ class UsersModel {
     return result;
   }
 
-  async updatePassword({email, newPassword}) {
+  async updatePassword({email, password}) {
     const userUpdated = await UserMongoose.updateOne(
       { email: email },
       {
-        password: newPassword,
+        password: password,
       }
     );
+    console.log(JSON.stringify(userUpdated))
     return userUpdated
   }
 

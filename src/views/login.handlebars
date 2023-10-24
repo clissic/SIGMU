@@ -2,7 +2,7 @@
   <div id="header">
     <img id="cornerLogo" src="/img/cintaPNN.png" alt="img PNN" />
     <div id="headerTitle">
-      <a href="/index"><h1 id="mainTitle">SIGMU</h1></a>
+      <a href="/index/index"><h1 id="mainTitle">SIGMU</h1></a>
       <h3>Sistema de Gestión de Multas</h3>
       <p>Prefectura del Puerto de Montevideo</p>
     </div>
@@ -19,12 +19,13 @@
           {{user.rank}}
           {{user.first_name}}
           {{user.last_name}}</h3>
-        <a class="btnLI" href="/home">PANEL DE USUARIO</a>
+        <a class="btnLI" href="/index/home">PANEL DE USUARIO</a>
       </div>
     {{/if}}
     {{#unless user}}
       <form id="loginForm" action="/api/sessions/login" method="post">
         <p>Ingrese sus credenciales:</p>
+        <h2 id="backMsg">{{msg}}</h2>
         <input
           type="email"
           name="email"
@@ -43,8 +44,8 @@
         <div class="dropdown">
           <button id="btnRequest">SOLICITAR</button>
           <div class="dropdownRegCont">
-            <a href="/newAccountForm">NUEVA CUENTA</a>
-            <a href="#">CONTRASEÑA</a>
+            <a href="/newAccount">NUEVA CUENTA</a>
+            <a href="/forgotPassword">CONTRASEÑA</a>
           </div>
         </div>
       </form>
