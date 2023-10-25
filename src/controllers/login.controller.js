@@ -11,6 +11,10 @@ class LoginController {
   async forgotPasswordRender(req, res) {
     return res.status(200).render("forgotPasswordForm", {});
   }
+
+  async passportFailure(req, res) {
+    return res.status(200).render("passportFailure", {})
+  }
 }
 
 export const loginController = new LoginController();

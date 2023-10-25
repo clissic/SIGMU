@@ -9,3 +9,5 @@ loginRouter.get("/", alreadyLogged, loginController.loginRender);
 loginRouter.get("/newAccount", alreadyLogged, loginController.newAccountRender);
 
 loginRouter.get("/forgotPassword", alreadyLogged, loginController.forgotPasswordRender);
+
+loginRouter.get("/passportFailure", alreadyLogged, loginController.passportFailure)

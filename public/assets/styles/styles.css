@@ -56,6 +56,15 @@ a:visited {
   text-align: center;
 }
 
+#backMsg {
+  text-align: center;
+  color: rgb(160, 0, 160);
+}
+
+#userEmail {
+  text-align: center;
+}
+
 #loginCont {
   width: 19%;
   margin: auto 3% auto 3%;
@@ -119,8 +128,7 @@ a:visited {
 
 #btnRequest {
   width: 100%;
-  max-width: 10vw;
-  padding: 8px 16px 8px 16px;
+  padding: 8px 0px 8px 0px;
   border: none;
   border-radius: 12px;
   background-color: rgb(100, 100, 100);
@@ -137,19 +145,21 @@ a:visited {
 }
 
 .dropdown {
-  width: auto;
-  min-width: 10vw;
   position: relative;
-  display: inline-block;
   text-align: center;
+
+  display: inline-block;
+  padding-top: 2vh;
+  width: 15vw;
+  margin: auto;
 }
 
 .dropdownRegCont {
+  width: 100%;
   margin: auto;
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   border-radius: 20px 20px 20px 20px;
@@ -158,6 +168,7 @@ a:visited {
 
 .dropdownRegCont a {
   color: black;
+  width: auto;
   padding: 12px 16px;
   text-decoration: none;
   display: flex;
@@ -176,6 +187,8 @@ a:visited {
 #subBody {
   height: 100%;
   border-radius: 0px 0px 50px 50px;
+  display: flex;
+  flex-direction: column;
 }
 
 #subBody input {
@@ -249,9 +262,8 @@ a:visited {
 }
 
 .btnLI {
-  width: 100%;
-  max-width: 10vw;
-  padding: 8px 16px 8px 16px;
+  width: 50%;
+  padding: 8px 0px 8px 0px;
   border: none;
   border-radius: 12px;
   background-color: #007dbf;
@@ -323,7 +335,7 @@ a:visited {
 
 .formInputTextarea {
   height: 150px;
-  padding: 0 10px 0 10px;
+  padding: 5px 10px 0 10px;
   border-radius: 10px;
   border: none;
   background-color: white;

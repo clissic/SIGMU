@@ -6,6 +6,6 @@ export const sessionsRouter = express.Router();
 
 sessionsRouter.post("/signup", passport.authenticate('register', { failureRedirect: '/' }), sessionsController.signup);
 
-sessionsRouter.post("/login", passport.authenticate('login', { failureRedirect: '/login' }), sessionsController.login);
+sessionsRouter.post("/login", passport.authenticate('login', { failureRedirect: '/passportFailure' }), sessionsController.login);
 
 sessionsRouter.get("/logout", sessionsController.logout)

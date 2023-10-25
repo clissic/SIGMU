@@ -51,7 +51,7 @@ class UsersController {
         last_name,
         rank,
         email,
-        createHash(password),
+        createHash(password)
       );
       if (!userDTO.first_name || !userDTO.last_name || !userDTO.email) {
         logger.info(
@@ -164,7 +164,7 @@ class UsersController {
     try {
       const email = req.session.user.email;
       const password = req.body;
-      const userUpdated = await userService.updatePassword({email, password})
+      const userUpdated = await userService.updatePassword({ email, password });
       if (userUpdated) {
         return res.status(200).json({
           status: "success",
@@ -185,6 +185,23 @@ class UsersController {
         msg: "Something went wrong " + e,
         payload: {},
       });
+    }
+  }
+
+  async sendNewAccEmail(req, res) {
+    try {
+      const { first_name, last_name, rank, email, newAccBody } = req.body;
+      const emailSent = await userService.sendNewAccEmail({first_name, last_name, rank, email, newAccBody});
+      return res
+        .status(200)
+        .render("login", { msg: "Solicitud enviada con éxito." });
+    } catch (error) {
+      logger.error("Error in users.controller sendNewAccEmail: " + error)
+      return res
+        .status(400)
+        .render("errorPage", {
+          msg: "La solicitud no fue realizada con exito.",
+        });
     }
   }
 }

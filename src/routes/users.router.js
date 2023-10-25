@@ -3,6 +3,8 @@ import { usersController } from "../controllers/users.controller.js";
 
 export const usersRouter = express.Router();
 
+usersRouter.post("/newAccount", usersController.sendNewAccEmail);
+
 usersRouter.post("/create", usersController.create);
 
 usersRouter.get("/", usersController.getAll);

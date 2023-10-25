@@ -31,13 +31,13 @@ class TokensController {
         res.render("newPasswordForm", { email: email });
       } else {
         res.render("errorPage", {
-          msg: "Your token has expired or is invalid.",
+          msg: "Tu token ha expirado o es inválido.",
         });
       }
     } catch (error) {
       logger.error("Error finding token in login.controller: " + error);
       res.render("errorPage", {
-        msg: "Error finding token in login.controller.",
+        msg: "Error encontrando un token en login.controller.",
       });
     }
   }
@@ -50,7 +50,7 @@ class TokensController {
     } catch (error) {
       logger.error("Error sending email in login.controller: " + error);
       res.status(404).render("errorPage", {
-        msg: "Error sending email in login.controller.",
+        msg: "Error enviando el email en tokens.controller.",
       });
     }
   }
