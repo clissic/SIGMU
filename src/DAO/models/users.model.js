@@ -119,7 +119,6 @@ class UsersModel {
         password: password,
       }
     );
-    console.log(JSON.stringify(userUpdated))
     return userUpdated
   }
 

@@ -13,3 +13,5 @@ indexRouter.get("/carFineForm", checkLogin, indexController.carFineFormRender);
 indexRouter.get("/success", checkLogin, indexController.successRender);
 
 indexRouter.get("/userFines", checkLogin, indexController.userFinesRender);
+
+indexRouter.get("/updatePasswordForm", checkLogin, indexController.updatePassword);

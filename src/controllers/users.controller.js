@@ -178,11 +178,38 @@ class UsersController {
           payload: {},
         });
       }
-    } catch (e) {
+    } catch (error) {
       logger.info(e);
       return res.status(500).json({
         status: "error",
-        msg: "Something went wrong " + e,
+        msg: "Something went wrong " + error,
+        payload: {},
+      });
+    }
+  }
+
+  async updatePasswordAndRender(req, res) {
+    try {
+      const email = req.session.user.email;
+      const { newPassword, confirmPassword } = req.body;
+      if (newPassword == confirmPassword) {
+        const password = createHash(newPassword)
+        const userUpdated = await userService.updatePassword({ email, password });
+        if (userUpdated) {
+          logger.info(email + " actualizó su contraseña con éxito")
+          return res.status(200).render("success", { msg: "Contraseña actualizada con éxito."});
+        } else {
+          logger.error(email + " NO logró actualizar su contraseña con éxito")
+          return res.status(400).render("errorPage", { msg: "La contraseña no ha podido ser actualizada." });
+        }
+      } else {
+        return res.status(400).render("updatePasswordForm", { msg: "LAS CONTRASEÑAS DEBEN COINCIDIR"})
+      }
+    } catch (error) {
+      logger.info(e);
+      return res.status(500).json({
+        status: "error",
+        msg: "Something went wrong " + error,
         payload: {},
       });
     }
@@ -194,7 +221,7 @@ class UsersController {
       const emailSent = await userService.sendNewAccEmail({first_name, last_name, rank, email, newAccBody});
       return res
         .status(200)
-        .render("login", { msg: "Solicitud enviada con éxito." });
+        .render("success", { msg: "Solicitud enviada con éxito." });
     } catch (error) {
       logger.error("Error in users.controller sendNewAccEmail: " + error)
       return res

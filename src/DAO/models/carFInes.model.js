@@ -1,3 +1,4 @@
+import { logger } from "../../utils/logger.js";
 import { CarFinesMongoose } from "./mongoose/carFines.mongoose.js";
 
 async function getNextFineNumber() {
@@ -108,29 +109,37 @@ class CarFinesModel {
   }
 
   async findByEmail(email) {
-    const userFines = await CarFinesMongoose.find(
-      {email: email},
-      {
-        _id: true,
-        fine_number: true,
-        fine_date: true,
-        fine_time: true,
-        fine_article: true,
-        fine_amount: true,
-        fine_extra_amount: true,
-        fine_author: true,
-        fine_proves: true,
-        fine_status: true,
-        car_brand: true,
-        car_model: true,
-        car_reg_number: true,
-        owner_ci: true,
-        owner_name: true,
-        owner_tel: true,
-        owner_dir: true,
+    try {
+      const userFines = await CarFinesMongoose.find(
+        { fine_author: email },
+        {
+          _id: true,
+          fine_number: true,
+          fine_date: true,
+          fine_time: true,
+          fine_article: true,
+          fine_amount: true,
+          fine_extra_amount: true,
+          fine_author: true,
+          fine_proves: true,
+          fine_status: true,
+          car_brand: true,
+          car_model: true,
+          car_reg_number: true,
+          owner_ci: true,
+          owner_name: true,
+          owner_tel: true,
+          owner_dir: true,
+        }
+      );
+      if (!userFines) {
+        throw new Error("No se encontraron multas para el correo electrónico proporcionado.");
       }
-    );
-    return userFines;
+      return userFines;
+    } catch (error) {
+      logger.error("Error al buscar multas por correo electrónico: " + error);
+      throw error;
+    }
   }
 }
 

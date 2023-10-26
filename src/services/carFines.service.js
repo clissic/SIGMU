@@ -5,24 +5,24 @@ class CarFinesService {
   async getAll() {
     try {
       return await carFinesModel.getAll();
-    } catch (e) {
-      throw logger.error("Failed to get all car fines: " + e);
+    } catch (error) {
+      throw logger.error("Failed to get all car fines: " + error);
     }
   }
 
   async findById(id) {
     try {
       return await carFinesModel.findById(id);
-    } catch (e) {
-      throw logger.error("Failed to find car fine by ID: " + e);
+    } catch (error) {
+      throw logger.error("Failed to find car fine by ID: " + error);
     }
   }
 
   async findByNumber(fine_number) {
     try {
       return await carFinesModel.findByNumber(fine_number);
-    } catch (e) {
-      throw logger.error("Failed to find car fines by number: " + e);
+    } catch (error) {
+      throw logger.error("Failed to find car fines by number: " + error);
     }
   }
 
@@ -82,24 +82,26 @@ class CarFinesService {
       });
       await carFineCreated.save();
       return carFineCreated;
-    } catch (e) {
-      throw logger.error("Failed to create car fine: " + e);
+    } catch (error) {
+      throw logger.error("Failed to create car fine: " + error);
     }
   }
 
   async deleteOne(id) {
     try {
         return await carFinesModel.deleteOne(id)
-    } catch(e) {
-        throw logger.error("Failed deleting car fine by ID: " + e)
+    } catch(error) {
+        throw logger.error("Failed deleting car fine by ID: " + error)
     }
   }
 
   async findByEmail(email) {
     try {
-      return await carFinesModel.findByEmail(email);
-    } catch (e) {
-      throw logger.error("Failed to get all car fines: " + e);
+      const userFines = await carFinesModel.findByEmail(email);
+      return userFines;
+    } catch (error) {
+      logger.error("Failed to get car fines by email: " + error);
+      throw error; // Re-lanza el error para que se maneje en un nivel superior si es necesario.
     }
   }
 }

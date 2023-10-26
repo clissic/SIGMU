@@ -10,3 +10,5 @@ usersRouter.post("/create", usersController.create);
 usersRouter.get("/", usersController.getAll);
 
 usersRouter.get("/:id", usersController.findById);
+
+usersRouter.post("/updatePasswordForm", usersController.updatePasswordAndRender);
