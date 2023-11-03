@@ -17,7 +17,7 @@
   </div>
   <div id="userFinesBody">
     <h2>Mis multas:</h2>
-    <form id="searchBody">
+    {{!-- <form id="searchBody">
       <label for="searchBar">Buscar por:</label>
       <input
         type="search"
@@ -25,8 +25,8 @@
         id="searchBar"
         placeholder="Multa, vehículo o propietario..."
       />
-      {{!-- <button>BUSCAR</button> --}}
-    </form>
+      <button>BUSCAR</button>
+    </form> --}}
     <table>
       <tr>
         <th colspan="8">Multa</th>
@@ -49,6 +49,23 @@
         <th>Nombre</th>
         <th>Teléfono</th>
         <th>Dirección</th>
+      </tr>
+      <tr>
+        <th></th>
+        <th><input type="search" class="fineInputSearch" id="searchByNumber"></th>
+        <th><input type="search" class="fineInputSearch" id="searchByDate"></th>
+        <th><input type="time" class="fineInputSearch" id="searchByHour"></th>
+        <th><input type="search" class="fineInputSearch" id="searchByArticle"></th>
+        <th><input type="number" class="fineInputSearch" id="searchByAmount"></th>
+        <th><input type="number" class="fineInputSearch" id="searchByExtraAmount"></th>
+        <th></th>
+        <th><input type="search" class="fineInputSearch" id="searchByBrand"></th>
+        <th><input type="search" class="fineInputSearch" id="searchByModel"></th>
+        <th><input type="search" class="fineInputSearch" id="searchByReg"></th>
+        <th><input type="search" class="fineInputSearch" id="searchByDoc"></th>
+        <th><input type="search" class="fineInputSearch" id="searchByName"></th>
+        <th><input type="search" class="fineInputSearch" id="searchByPhone"></th>
+        <th><input type="search" class="fineInputSearch" id="searchByAdress"></th>
       </tr>
       {{#each userFines}}
         <tr>

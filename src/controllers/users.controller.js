@@ -190,12 +190,12 @@ class UsersController {
 
   async updatePasswordAndRender(req, res) {
     try {
+      const user = req.session.user;
       const email = req.session.user.email;
       const { newPassword, confirmPassword } = req.body;
       if (newPassword == confirmPassword) {
-        const password = createHash(newPassword)
-        const userUpdated = await userService.updatePassword({ email, password });
-        if (userUpdated) {
+        const userUpdated = await userService.updatePassword({ email, newPassword: createHash(newPassword) });
+        if (userUpdated.acknowledged == true) {
           logger.info(email + " actualizó su contraseña con éxito")
           return res.status(200).render("success", { msg: "Contraseña actualizada con éxito."});
         } else {
@@ -203,10 +203,10 @@ class UsersController {
           return res.status(400).render("errorPage", { msg: "La contraseña no ha podido ser actualizada." });
         }
       } else {
-        return res.status(400).render("updatePasswordForm", { msg: "LAS CONTRASEÑAS DEBEN COINCIDIR"})
+        return res.status(400).render("updatePasswordForm", { email, user, msg: "LAS CONTRASEÑAS DEBEN COINCIDIR"})
       }
     } catch (error) {
-      logger.info(e);
+      logger.error("Error de servidor: " + error);
       return res.status(500).json({
         status: "error",
         msg: "Something went wrong " + error,
@@ -223,12 +223,23 @@ class UsersController {
         .status(200)
         .render("success", { msg: "Solicitud enviada con éxito." });
     } catch (error) {
-      logger.error("Error in users.controller sendNewAccEmail: " + error)
+      logger.error("Error in users.controller sendNewAccEmail: " + error);
       return res
         .status(400)
         .render("errorPage", {
           msg: "La solicitud no fue realizada con exito.",
         });
+    }
+  }
+
+  async updateDataAndRender(req, res) {
+    try {
+      const { first_name, newFirstName, last_name, newLastName, rank, newRank, role, newRole, email, newEmail, newDataBody } = req.body;
+      const emailSent = await userService.sendNewDataEmail({ first_name, newFirstName, last_name, newLastName, rank, newRank, role, newRole, email, newEmail, newDataBody });
+      return res.status(200).render("success", { msg: "Solicitud enviada con éxito." });
+    } catch (error) {
+      logger.error("Error in users.controller updateDataAndRender: " + error);
+      return res.status(400).render("errorPage", { msg: "La solicitud no fue realizada con éxito." });
     }
   }
 }

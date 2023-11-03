@@ -7,6 +7,7 @@ class TokensController {
     try {
       if (newPassword === confirmPassword) {
         await recoverTokensService.recoverPass(email, newPassword);
+        logger.info(email + " actualizó su contraseña con éxito")
         res.render("login", { msg: "CONTRASEÑA ACTUALIZADA CORRECTAMENTE" });
       } else {
         res.render("newPasswordForm", {

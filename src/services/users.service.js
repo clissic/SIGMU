@@ -79,7 +79,8 @@ class UserService {
 
   async updatePassword({ email, newPassword }) {
     try {
-      return await usersModel.updatePassword({ email, newPassword });
+      const userUpdated = await usersModel.updatePassword({ email, password: newPassword });
+      return userUpdated;
     } catch (error) {
       throw new Error("Failed to update password: " + error);
     }
@@ -114,6 +115,38 @@ class UserService {
       });
     } catch (error) {
       logger.error(`Email could not be sent successfully: ` + error);
+    }
+  }
+
+  async sendNewDataEmail({ first_name, newFirstName, last_name, newLastName, rank, newRank, role, newRole, email, newEmail, newDataBody }) {
+    const API_URL = env.apiUrl;
+    try {
+      await transport.sendMail({
+        from: env.googleEmail,
+        to: env.googleEmail,
+        subject: "[SIGMU] Solicitud de actualización de datos",
+        html: `
+                <div>
+                    <h1>SIGMU</h1>
+                    <p>Solicitud de actualización de datos del Sr./Sra.:</p>
+                    <h3>${rank} ${first_name} ${last_name}</h3>
+                    <h4>${email} (${role})</h4>
+                    <p>El/la cual quiere actualizar su información en el siguiente tenor:</p>
+                    <ul>
+                      <li>Nombre: <strong>${newFirstName}</strong></li>
+                      <li>Apellido: <strong>${newLastName}</strong></li>
+                      <li>Grado: <strong>${newRank}</strong></li>
+                      <li>Email: <strong>${newEmail}</strong></li>
+                      <li>Rol: <strong>${newRole}</strong></li>
+                    </ul>
+                    <p>Justificación:</p>
+                    <strong>${newDataBody}</strong>
+                    <p>Se ruega no responder a este correo ya que se trata de un servicio automático de SIGMU.</p>
+                </div>
+            `,
+      });
+    } catch (error) {
+      logger.error("Email could not be sent successfully: " + error);
     }
   }
 }

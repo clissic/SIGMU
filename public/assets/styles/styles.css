@@ -670,6 +670,13 @@ th {
   text-align: center;
 }
 
+th input {
+  width: 100%;
+  height: 1.5rem;
+  border: none;
+  border-radius: 5px;
+}
+
 .fineBtnCell {
   border: none;
   background-color: black;

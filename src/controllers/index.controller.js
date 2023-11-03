@@ -57,6 +57,11 @@ class IndexController {
     const email = req.session.user.email;
     return res.status(200).render("updatePasswordForm", { user, email })
   }
+
+  async updateDataForm(req, res) {
+    const user = req.session.user;
+    return res.status(200).render("updateDataForm", { user })
+  }
 }
 
 export const indexController = new IndexController();

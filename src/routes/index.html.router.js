@@ -15,3 +15,5 @@ indexRouter.get("/success", checkLogin, indexController.successRender);
 indexRouter.get("/userFines", checkLogin, indexController.userFinesRender);
 
 indexRouter.get("/updatePasswordForm", checkLogin, indexController.updatePassword);
+
+indexRouter.get("/updateDataForm", checkLogin, indexController.updateDataForm)
