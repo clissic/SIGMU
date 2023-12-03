@@ -712,6 +712,7 @@ th input {
 }
 
 .fineSearchInputs {
+  overflow-x: auto;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -834,6 +835,7 @@ th input {
   color: rgb(75, 75, 75);
   font-size: small;
   align-self: center;
+  text-decoration: underline;
 }
 
 .provesBtn {
@@ -885,4 +887,36 @@ th input {
 
 .fineDiv p {
   align-self: center;
+}
+
+/* Paginacion */
+
+#pagination {
+  margin: 6vh 0 6vh 0;
+}
+
+#paginationBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#paginationBtns a {
+  text-decoration: none;
+  color: black;
+}
+
+#paginationBtns a:hover {
+  text-decoration: underline;
+}
+
+#paginationInfo {
+  width: 100%;
+  text-align: center;
+}
+
+.abled-false {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: rgb(180, 180, 180) !important;
 }

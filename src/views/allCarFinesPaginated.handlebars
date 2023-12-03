@@ -183,6 +183,14 @@
         </div>
       {{/each}}
     </div>
+    <div id="pagination">
+      <div id="paginationBtns">
+        <a href="{{prevLink}}" class="abled-{{hasPrevPage}}"><strong>« Anterior</strong></a>
+        <p>Página <strong>{{page}}</strong> de <strong>{{totalPages}}</strong></p>
+        <a href="{{nextLink}}" class="abled-{{hasNextPage}}"><strong>Siguiente »</strong></a>
+      </div>
+      <p id="paginationInfo">Se encontró un total de <strong>{{totalDocs}}</strong> multa/s.</p>
+    </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="/assets/js/allCarFines.js"></script>

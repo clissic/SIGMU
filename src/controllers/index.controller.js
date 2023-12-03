@@ -181,21 +181,9 @@ class IndexController {
         nextPage,
       } = queryResult;
 
-      const prevLink = hasPrevPage
-        ? `/index/allCarFines?currentPage=${prevPage}&pageSize=${
-            pageSize || ""
-          }&sort=${sort || ""}${
-            car_brand ? `&car_brand=${encodeURIComponent(car_brand)}` : ""
-          }`
-        : null;
+      const prevLink = hasPrevPage ? `/index/allCarFines?currentPage=${prevPage}&pageSize=${pageSize || ""}&fine_number=${fine_number ? fine_number : ""}&fine_date=${fine_date ? fine_date : ""}&fine_article=${fine_article ? fine_article : ""}&fine_amount=${fine_amount ? fine_amount : ""}&fine_author=${fine_author ? fine_author : ""}&fine_status=${fine_status ? fine_status : ""}&car_brand=${car_brand ? car_brand : ""}&car_model=${car_model ? car_model : ""}&car_reg_number=${car_reg_number ? car_reg_number : ""}&owner_ci=${owner_ci ? owner_ci : ""}&owner_name=${owner_name ? owner_name : ""}`: null;
 
-      const nextLink = hasNextPage
-        ? `/index/allCarFines?currentPage=${nextPage}&pageSize=${
-            pageSize || ""
-          }&sort=${sort || ""}${
-            car_brand ? `&car_brand=${encodeURIComponent(car_brand)}` : ""
-          }`
-        : null;
+      const nextLink = hasNextPage ? `/index/allCarFines?currentPage=${nextPage}&pageSize=${pageSize || ""}&fine_number=${fine_number ? fine_number : ""}&fine_date=${fine_date ? fine_date : ""}&fine_article=${fine_article ? fine_article : ""}&fine_amount=${fine_amount ? fine_amount : ""}&fine_author=${fine_author ? fine_author : ""}&fine_status=${fine_status ? fine_status : ""}&car_brand=${car_brand ? car_brand : ""}&car_model=${car_model ? car_model : ""}&car_reg_number=${car_reg_number ? car_reg_number : ""}&owner_ci=${owner_ci ? owner_ci : ""}&owner_name=${owner_name ? owner_name : ""}`: null;
 
       return res
         .status(200)
@@ -209,6 +197,8 @@ class IndexController {
           pagingCounter,
           prevLink,
           nextLink,
+          hasNextPage,
+          hasPrevPage,
         }); /* json({
         status: 'success',
         msg: 'Fines list',
