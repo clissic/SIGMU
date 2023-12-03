@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import mongoosePaginate from "mongoose-paginate-v2";
 
 const schema = new Schema({
   fine_number : { type: Number, required: true },
@@ -18,5 +19,7 @@ const schema = new Schema({
   owner_tel: { type: String, default: "S/D" },
   owner_dir: { type: String, default: "S/D" },
 });
+
+schema.plugin(mongoosePaginate);
 
 export const CarFinesMongoose = model("carFines", schema);

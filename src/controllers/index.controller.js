@@ -27,7 +27,7 @@ class IndexController {
 
   async userFinesRender(req, res) {
     const user = req.session.user;
-    const userFines = await carFinesServices.findByEmail(user.email)
+    const userFines = await carFinesServices.findByEmail(user.email);
     const filteredUserFines = userFines.map((fine) => {
       return {
         _id: fine._id,
@@ -49,18 +49,191 @@ class IndexController {
         owner_dir: fine.owner_dir,
       };
     });
-    return res.status(200).render("userFines", { user, userFines: filteredUserFines })
+    return res
+      .status(200)
+      .render("userFines", { user, userFines: filteredUserFines });
   }
 
   async updatePassword(req, res) {
     const user = req.session.user;
     const email = req.session.user.email;
-    return res.status(200).render("updatePasswordForm", { user, email })
+    return res.status(200).render("updatePasswordForm", { user, email });
   }
 
   async updateDataForm(req, res) {
     const user = req.session.user;
-    return res.status(200).render("updateDataForm", { user })
+    return res.status(200).render("updateDataForm", { user });
+  }
+
+  async getAllCarFines(req, res) {
+    const user = req.session.user;
+    return res.status(200).render("allCarFinesPaginated", { user });
+  }
+
+  async paginateCarFines(req, res) {
+    const user = req.session.user;
+    try {
+      let {
+        currentPage,
+        pageSize,
+        sort,
+        fine_number,
+        fine_date,
+        fine_article,
+        fine_amount,
+        fine_author,
+        fine_status,
+        car_brand,
+        car_model,
+        car_reg_number,
+        owner_ci,
+        owner_name,
+      } = req.query;
+      const sortOption =
+        sort === "asc"
+          ? { fine_date: 1 }
+          : sort === "desc"
+          ? { fine_date: -1 }
+          : {};
+
+      const options = {
+        sort: sortOption,
+        limit: parseInt(pageSize, 10) || 10,
+        page: parseInt(currentPage, 10) || 1,
+      };
+
+      // En el método de paginación
+      const mongooseFilter = {};
+
+      // Lógica de los filtros
+      if (fine_number) {
+        mongooseFilter.fine_number = fine_number;
+      }
+      if (fine_date) {
+        mongooseFilter.fine_date = { $regex: new RegExp(fine_date) };
+      }
+      if (fine_article) {
+        mongooseFilter.fine_article = { $regex: new RegExp(fine_article, "i") };
+      }
+      if (fine_amount) {
+        mongooseFilter.fine_amount = fine_amount;
+      }
+      if (fine_author) {
+        mongooseFilter.fine_author = { $regex: new RegExp(fine_author, "i") };
+      }
+      if (fine_status) {
+        mongooseFilter.fine_status = fine_status;
+      }
+      if (car_brand) {
+        mongooseFilter.car_brand = { $regex: new RegExp(car_brand, "i") };
+      }
+      if (car_model) {
+        mongooseFilter.car_model = { $regex: new RegExp(car_model, "i") };
+      }
+      if (car_reg_number) {
+        mongooseFilter.car_reg_number = {
+          $regex: new RegExp(car_reg_number, "i"),
+        };
+      }
+      if (owner_ci) {
+        mongooseFilter.owner_ci = { $regex: new RegExp(owner_ci) };
+      }
+      if (owner_name) {
+        mongooseFilter.owner_name = { $regex: new RegExp(owner_name, "i") };
+      }
+
+      const queryResult = await CarFinesMongoose.paginate(
+        mongooseFilter,
+        options
+      );
+
+      const paginatedFines = queryResult.docs.map((fine) => {
+        return {
+          _id: fine._id,
+          fine_number: fine.fine_number,
+          fine_date: fine.fine_date,
+          fine_time: fine.fine_time,
+          fine_article: fine.fine_article,
+          fine_amount: fine.fine_amount,
+          fine_extra_amount: fine.fine_extra_amount,
+          fine_author: fine.fine_author,
+          fine_proves: fine.fine_proves,
+          fine_status: fine.fine_status,
+          car_brand: fine.car_brand,
+          car_model: fine.car_model,
+          car_reg_number: fine.car_reg_number,
+          owner_ci: fine.owner_ci,
+          owner_name: fine.owner_name,
+          owner_tel: fine.owner_tel,
+          owner_dir: fine.owner_dir,
+        };
+      });
+
+      const {
+        totalDocs,
+        limit,
+        totalPages,
+        page,
+        pagingCounter,
+        hasPrevPage,
+        hasNextPage,
+        prevPage,
+        nextPage,
+      } = queryResult;
+
+      const prevLink = hasPrevPage
+        ? `/index/allCarFines?currentPage=${prevPage}&pageSize=${
+            pageSize || ""
+          }&sort=${sort || ""}${
+            car_brand ? `&car_brand=${encodeURIComponent(car_brand)}` : ""
+          }`
+        : null;
+
+      const nextLink = hasNextPage
+        ? `/index/allCarFines?currentPage=${nextPage}&pageSize=${
+            pageSize || ""
+          }&sort=${sort || ""}${
+            car_brand ? `&car_brand=${encodeURIComponent(car_brand)}` : ""
+          }`
+        : null;
+
+      return res
+        .status(200)
+        .render("allCarFinesPaginated", {
+          user,
+          paginatedFines,
+          totalDocs,
+          limit,
+          totalPages,
+          page,
+          pagingCounter,
+          prevLink,
+          nextLink,
+        }); /* json({
+        status: 'success',
+        msg: 'Fines list',
+        payload: {
+          paginatedFines,
+          totalDocs,
+          limit,
+          totalPages,
+          prevPage,
+          nextPage,
+          page,
+          hasPrevPage,
+          hasNextPage,
+          prevLink,
+          nextLink,
+          pagingCounter,
+        },
+      }); */
+    } catch (error) {
+      console.error("Error getting fines and pagination:", error);
+      return res.status(500).json({
+        status: "error",
+        msg: "Error getting fines and pagination.",
+      });
+    }
   }
 }
 

@@ -699,3 +699,190 @@ th input {
 .loginContainer a {
   text-align: center;
 }
+
+/* TODAS LAS MULTAS */
+
+/* Inputs para buscar */
+#fineSearchContainer {
+  margin: 2vh 0 0 0;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 25px 25px 0 0;
+  box-shadow: rgba(0, 0, 0, 0.15) 1px 1px 10px 1px;
+}
+
+.fineSearchInputs {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  row-gap: 5vh;
+}
+
+.fineSearchCard {
+  border-radius: 15px;
+  padding: 5px 10px;
+}
+
+.fineSearchCard input {
+  border: none;
+  background-color: #f1f1f1;
+  height: 1.5rem;
+  border-radius: 5px;
+  padding-left: 5px;
+  margin-bottom: 1vh;
+}
+
+.fineSearchCard label {
+  font-weight: 600;
+}
+
+.filterBtn {
+  font-size: larger;
+  text-align: center;
+  border-radius: 0 0 25px 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: .5rem 1rem;
+  background-color: black;
+  color: white;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+.filterBtn:hover {
+  background-color: rgb(60, 60, 60);
+}
+
+.filterBtn:active {
+  background-color: rgb(100, 100, 100);
+}
+
+#fine_status {
+  border: none;
+  background-color: #f1f1f1;
+  height: 1.5rem;
+  border-radius: 5px;
+  padding-left: 5px;
+  margin-top: 1vh;
+}
+
+/* Tarjetas de multas */
+#fineCardContainer {
+  margin: 3vh 0 3vh 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  row-gap: 5vh;
+}
+
+.fineDivPrime {
+  box-shadow: rgba(0, 0, 0, 0.05) 1px 1px 10px 1px;
+  border: solid 1px rgba(128, 128, 128, 0.1);
+  border-radius: 15px;
+  margin-bottom: 1rem;
+  padding: 5px 10px;
+}
+
+.fineDivPrimeTitle {
+  text-decoration: underline;
+}
+
+.fineCard {
+  flex-basis: 40%;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1px 1px 10px 1px;
+}
+
+.fineDiv {
+  margin: 1vh 0 1vh 0;
+}
+
+.wSubDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.fineSubDiv {
+  display: flex;
+  flex-direction: row;
+  column-gap: 5px;
+}
+
+.flexClass {
+  display: flex;
+  flex-direction: row;
+  column-gap: .5rem;
+}
+
+.borderAlign {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.fine_number {
+  font-size: xx-large;
+  font-weight: 600;
+}
+
+.fineDivTitle {
+  color: rgb(75, 75, 75);
+  font-size: small;
+  align-self: center;
+}
+
+.provesBtn {
+  width: 30%;
+}
+
+.provesBtn a {
+  text-align: center;
+  color: white;
+  background-color: black;
+  border-radius: 15px;
+  text-decoration: none;
+  font-weight: 600;
+  padding: .5rem 1rem;
+  width: 100%;
+}
+
+.statusIndicatorfalse {
+  width: 30%;
+}
+
+.statusIndicatorfalse button{
+  text-align: center;
+  color: white;
+  background-color: rgb(200, 0, 0);
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: .5rem 1rem;
+  width: 100%;
+}
+
+.statusIndicatortrue {
+  width: 30%;
+}
+
+.statusIndicatortrue button{
+  text-align: center;
+  color: white;
+  background-color: rgb(0, 130, 0);
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: .5rem 1rem;
+  width: 100%;
+}
+
+.fineDiv p {
+  align-self: center;
+}

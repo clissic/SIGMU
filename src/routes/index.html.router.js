@@ -10,6 +10,8 @@ indexRouter.get("/home", checkLogin, indexController.homeRender);
 
 indexRouter.get("/carFineForm", checkLogin, indexController.carFineFormRender);
 
+indexRouter.get("/allCarFines", checkLogin, indexController.paginateCarFines);
+
 indexRouter.get("/success", checkLogin, indexController.successRender);
 
 indexRouter.get("/userFines", checkLogin, indexController.userFinesRender);
