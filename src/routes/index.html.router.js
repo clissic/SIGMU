@@ -18,4 +18,16 @@ indexRouter.get("/userFines", checkLogin, indexController.userFinesRender);
 
 indexRouter.get("/updatePasswordForm", checkLogin, indexController.updatePassword);
 
-indexRouter.get("/updateDataForm", checkLogin, indexController.updateDataForm)
+indexRouter.get("/updateDataForm", checkLogin, indexController.updateDataForm);
+
+indexRouter.get("/carFinesMenu", checkLogin, indexController.carFinesMenuRender);
+
+indexRouter.get("/shipFinesMenu", checkLogin, indexController.shipFinesMenuRender);
+
+indexRouter.get("/usersMenu", checkLogin, indexController.usersMenuRender);
+
+indexRouter.get("/toolsMenu", checkLogin, indexController.toolsMenuRender);
+
+indexRouter.get("/AIS", checkLogin, indexController.aisToolRender);
+
+indexRouter.get("/weather", checkLogin, indexController.weatherToolRender);

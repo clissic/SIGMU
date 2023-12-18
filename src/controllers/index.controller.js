@@ -225,6 +225,36 @@ class IndexController {
       });
     }
   }
+
+  async carFinesMenuRender(req, res) {
+    const user = req.session.user;
+    return res.status(200).render("carFinesMenu", { user });
+  }
+
+  async shipFinesMenuRender(req, res) {
+    const user = req.session.user;
+    return res.status(200).render("shipFinesMenu", { user });
+  }
+
+  async usersMenuRender(req, res) {
+    const user = req.session.user;
+    return res.status(200).render("usersMenu", { user });
+  }
+
+  async toolsMenuRender(req, res) {
+    const user = req.session.user;
+    return res.status(200).render("toolsMenu", { user });
+  }
+
+  async aisToolRender(req, res) {
+    const user = req.session.user;
+    return res.status(200).render("aisTool", { user });
+  }
+
+  async weatherToolRender(req, res) {
+    const user = req.session.user;
+    return res.status(200).render("weatherTool", { user });
+  }
 }
 
 export const indexController = new IndexController();

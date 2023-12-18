@@ -24,7 +24,11 @@
           <div class="fineSearchCard">
             <div>
               <label for="fine_number">Número: </label>
-              <input name="fine_number" type="number" placeholder="De la multa" />
+              <input
+                name="fine_number"
+                type="number"
+                placeholder="De la multa"
+              />
             </div>
             <div>
               <label for="fine_date">Fecha: </label>
@@ -34,17 +38,25 @@
           <div class="fineSearchCard">
             <div>
               <label for="fine_article">Artículo: </label>
-              <input name="fine_article" type="text" placeholder="Decreto 100/91"/>
+              <input
+                name="fine_article"
+                type="text"
+                placeholder="Decreto 100/91"
+              />
             </div>
             <div>
               <label for="fine_amount">Monto: </label>
-              <input name="fine_amount" type="number" placeholder="En U.R."/>
+              <input name="fine_amount" type="number" placeholder="En U.R." />
             </div>
           </div>
           <div class="fineSearchCard">
             <div>
               <label for="fine_author">Autor: </label>
-              <input name="fine_author" type="text" placeholder="Email ARMADA" />
+              <input
+                name="fine_author"
+                type="text"
+                placeholder="Email ARMADA"
+              />
             </div>
             <div>
               <label for="fine_status">Estado: </label>
@@ -56,27 +68,47 @@
             </div>
             <div>
               <label for="car_reg_number">Matrícula: </label>
-              <input name="car_reg_number" type="text" placeholder="Sin espacios" />
+              <input
+                name="car_reg_number"
+                type="text"
+                placeholder="Sin espacios"
+              />
             </div>
           </div>
           <div class="fineSearchCard">
             <div>
               <label for="car_brand">Marca: </label>
-              <input name="car_brand" type="text" placeholder="BMW, Audi, Peugeot, etc." />
+              <input
+                name="car_brand"
+                type="text"
+                placeholder="BMW, Audi, Peugeot, etc."
+              />
             </div>
             <div>
               <label for="car_model">Modelo: </label>
-              <input name="car_model" type="text" placeholder="M3, Q5, 208, etc." />
+              <input
+                name="car_model"
+                type="text"
+                placeholder="M3, Q5, 208, etc."
+              />
             </div>
           </div>
           <div class="fineSearchCard">
             <div>
               <label for="owner_name">Nombre: </label>
-              <input name="owner_name" type="text" placeholder="Propietario del vehículo"/>
+              <input
+                name="owner_name"
+                type="text"
+                placeholder="Propietario del vehículo"
+              />
             </div>
             <div>
               <label for="owner_ci">C.I. / Pass: </label>
-              <input name="owner_ci" type="number" placeholder="Sin puntos ni guiones"/>
+              <input
+                name="owner_ci"
+                type="number"
+                placeholder="Sin puntos ni guiones"
+              />
             </div>
           </div>
         </div>
@@ -186,10 +218,18 @@
     <div id="pagination">
       <div id="paginationBtns">
         <a href="{{prevLink}}" class="abled-{{hasPrevPage}}"><strong>« Anterior</strong></a>
-        <p>Página <strong>{{page}}</strong> de <strong>{{totalPages}}</strong></p>
+        <p>Página
+          <strong>{{page}}</strong>
+          de
+          <strong>{{totalPages}}</strong></p>
         <a href="{{nextLink}}" class="abled-{{hasNextPage}}"><strong>Siguiente »</strong></a>
       </div>
-      <p id="paginationInfo">Se encontró un total de <strong>{{totalDocs}}</strong> multa/s.</p>
+      <p id="paginationInfo">Se encontró un total de
+        <strong>{{totalDocs}}</strong>
+        multa/s.</p>
+    </div>
+    <div class="btnBackCont">
+      <a class="btnBack" href="/index/carFinesMenu/">VOLVER</a>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
