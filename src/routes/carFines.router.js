@@ -13,3 +13,7 @@ carFinesRouter.post("/create", carFinesController.create);
 carFinesRouter.delete("/:id", carFinesController.deleteOne);
 
 carFinesRouter.post("/createAndRender", checkLogin, carFinesController.createAndRender);
+
+carFinesRouter.get("/findBy/number", checkLogin, carFinesController.findByNumberAndRender);
+
+carFinesRouter.get("/update/:fine_number", checkLogin, carFinesController.findByNumberAndUpdate);

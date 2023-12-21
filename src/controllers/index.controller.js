@@ -255,6 +255,16 @@ class IndexController {
     const user = req.session.user;
     return res.status(200).render("weatherTool", { user });
   }
+
+  async camerasToolRender(req, res) {
+    const user = req.session.user;
+    return res.status(200).render("camerasTool", { user });
+  }
+
+  async updateCarFineRender(req, res) {
+    const user = req.session.user;
+    return res.status(200).render("updateCarFine", { user });
+  }
 }
 
 export const indexController = new IndexController();

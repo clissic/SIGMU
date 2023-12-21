@@ -18,7 +18,7 @@
   <div>
     <form
       class="formStyle"
-      action="/api/carFines//createAndRender"
+      action="/api/carFines/createAndRender"
       method="post"
     >
       <h3 class="formTitle">CARGAR NUEVA MULTA PARA VEHÍCULO TERRESTRE:</h3>
@@ -193,8 +193,16 @@
         <input id="formSubmit" type="submit" value="CREAR MULTA" />
       </div>
     </form>
+    <div id="subBodyText">
+      <p><strong>LEA CON ATENCIÓN:</strong>
+        El sistema registra en automático su usuario como autor de la multa. Si
+        usted no es el autor de la multa, se le recomienda que se abstenga de
+        cargar la misma ya que cualquier responsabilidad sobre el uso del
+        sistema en relación a la multa creada recaera sobre usted y su usuario.</p>
+    </div>
     <div class="btnBackCont">
       <a class="btnBack" href="/index/carFinesMenu/">VOLVER</a>
     </div>
+    <br />
   </div>
 </div>

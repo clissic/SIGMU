@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+/* document.addEventListener("DOMContentLoaded", function() {
   var readRoleElement = document.getElementById("readRole");
   
   if (readRoleElement) {
@@ -93,3 +93,4 @@ document.addEventListener("DOMContentLoaded", function() {
     // No se requiere acción para "superAdmin", ya que no se agrega la clase "disabled" ni se elimina el atributo "href".
   }
 });
+ */

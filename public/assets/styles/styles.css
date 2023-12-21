@@ -417,6 +417,22 @@ a:visited {
   margin: 30px auto 0 auto;
 }
 
+#updateFormSubmit {
+  width: auto;
+  padding: 8px 16px 8px 16px;
+  border: none;
+  border-radius: 12px;
+  background-color: #007dbf;
+  color: white;
+  font-weight: 600;
+  font-size: medium;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.15) 1px 1px 10px 1px;
+  transition: all 0.2s;
+  color: white;
+  margin: 30px auto 0 auto;
+}
+
 #formSubmit:hover {
   background-color: #005d8f;
 }
@@ -701,6 +717,30 @@ a:visited {
   background-position: 48%;
 }
 
+#oesteCameraCard {
+  background-image: url(../../img/torreOesteCameraTool.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#norteCameraCard {
+  background-image: url(../../img/torreNorteCameraTool.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#mercadoCameraCard {
+  background-image: url(../../img/mercadoDelPuertoCameraTool.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#terminalCameraCard {
+  background-image: url(../../img/terminalRioBrancoCameraTool.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
 .disabled {
   filter: contrast(0.2) blur(3px) !important;
   translate: 0px 0px 0px !important;
@@ -922,11 +962,11 @@ th input {
   width: 100%;
 }
 
-.statusIndicatorfalse {
+.statusIndicatordue {
   width: 30%;
 }
 
-.statusIndicatorfalse button{
+.statusIndicatordue button{
   text-align: center;
   color: white;
   background-color: rgb(200, 0, 0);
@@ -938,14 +978,46 @@ th input {
   width: 100%;
 }
 
-.statusIndicatortrue {
+.statusIndicatorpaid {
   width: 30%;
 }
 
-.statusIndicatortrue button{
+.statusIndicatorpaid button{
   text-align: center;
   color: white;
   background-color: rgb(0, 130, 0);
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: .5rem 1rem;
+  width: 100%;
+}
+
+.statusIndicatordismissed {
+  width: 30%;
+}
+
+.statusIndicatordismissed button{
+  text-align: center;
+  color: white;
+  background-color: rgb(0, 174, 174);
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: .5rem 1rem;
+  width: 100%;
+}
+
+.statusIndicatornoData {
+  width: 30%;
+}
+
+.statusIndicatornoData button{
+  text-align: center;
+  color: white;
+  background-color: rgb(255, 145, 0);
   border-radius: 15px;
   border: none;
   cursor: pointer;

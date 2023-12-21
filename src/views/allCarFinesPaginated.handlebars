@@ -32,7 +32,7 @@
             </div>
             <div>
               <label for="fine_date">Fecha: </label>
-              <input name="fine_date" type="text" placeholder="dd/mm/aa" />
+              <input name="fine_date" type="text" placeholder="aaaa-mm-dd" />
             </div>
           </div>
           <div class="fineSearchCard">
@@ -62,8 +62,9 @@
               <label for="fine_status">Estado: </label>
               <select name="fine_status" id="fine_status">
                 <option selected disabled value="">Elegir...</option>
-                <option value="true">PAGA</option>
-                <option value="false">IMPAGA</option>
+                <option value="paid">PAGA</option>
+                <option value="due">IMPAGA</option>
+                <option value="dismissed">DESESTIMADA</option>
               </select>
             </div>
             <div>
@@ -207,7 +208,7 @@
               <button
                 data-id="{{_id}}"
                 data-number="{{fine_number}}"
-                title="{{fine_status}}"
+                data-status="{{fine_status}}"
                 class="fineStatusBtn"
               >ESTADO</button>
             </div>
@@ -231,6 +232,7 @@
     <div class="btnBackCont">
       <a class="btnBack" href="/index/carFinesMenu/">VOLVER</a>
     </div>
+    <br />
   </div>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="/assets/js/allCarFines.js"></script>
