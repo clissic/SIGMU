@@ -741,6 +741,36 @@ a:visited {
   background-position: center;
 }
 
+#anpArrivesCard {
+  background-image: url(../../img/anpTool.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#arrivesCard {
+  background-image: url(../../img/arrivesAnpTool.jpg);
+  background-size: cover;
+  background-position: right;
+}
+
+#shipDataCard {
+  background-image: url(../../img/shipDataTool.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portOcupationCard {
+  background-image: url(../../img/ocupationAnpTool.jpg);
+  background-size: cover;
+  background-position: 80%;
+}
+
+#mooringAssignCard {
+  background-image: url(../../img/mooringTool.jpg);
+  background-size: cover;
+  background-position: left;
+}
+
 .disabled {
   filter: contrast(0.2) blur(3px) !important;
   translate: 0px 0px 0px !important;

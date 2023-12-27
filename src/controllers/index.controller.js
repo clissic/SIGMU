@@ -265,6 +265,11 @@ class IndexController {
     const user = req.session.user;
     return res.status(200).render("updateCarFine", { user });
   }
+
+  async arrivesToolRender(req, res) {
+    const user = req.session.user;
+    return res.status(200).render("arrivesTool", { user });
+  }
 }
 
 export const indexController = new IndexController();

@@ -30,8 +30,10 @@ indexRouter.get("/usersMenu", checkLogin, indexController.usersMenuRender);
 
 indexRouter.get("/toolsMenu", checkLogin, indexController.toolsMenuRender);
 
-indexRouter.get("/AIS", checkLogin, indexController.aisToolRender);
+indexRouter.get("/ais", checkLogin, indexController.aisToolRender);
 
 indexRouter.get("/weather", checkLogin, indexController.weatherToolRender);
 
 indexRouter.get("/cameras", checkLogin, indexController.camerasToolRender);
+
+indexRouter.get("/arrives", checkLogin, indexController.arrivesToolRender);
