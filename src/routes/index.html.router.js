@@ -16,6 +16,8 @@ indexRouter.get("/allCarFines", checkLogin, indexController.paginateCarFines);
 
 indexRouter.get("/updateCarFine", checkLogin, indexController.updateCarFineRender);
 
+indexRouter.get("/deleteCarFine", checkLogin, indexController.deleteCarFineRender);
+
 indexRouter.get("/success", checkLogin, indexController.successRender);
 
 indexRouter.get("/userFines", checkLogin, indexController.userFinesRender);

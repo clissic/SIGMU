@@ -41,6 +41,7 @@ class CarFinesService {
     owner_name,
     owner_tel,
     owner_dir,
+    last_modified_by,
   }) {
     try {
       async function ordenarFecha(fecha) {
@@ -79,6 +80,7 @@ class CarFinesService {
         owner_name,
         owner_tel,
         owner_dir,
+        last_modified_by,
       });
       await carFineCreated.save();
       return carFineCreated;
@@ -117,6 +119,15 @@ class CarFinesService {
     try {
       const updatedCarFine = await carFinesModel.findOneAndUpdate(query, update);
       return updatedCarFine;
+    } catch (error) {
+      throw error;
+    }
+  }
+  
+  async findOneAndDelete(query) {
+    try {
+      const carFineDeleted = await carFinesModel.findOneAndDelete(query);
+      return carFineDeleted;
     } catch (error) {
       throw error;
     }

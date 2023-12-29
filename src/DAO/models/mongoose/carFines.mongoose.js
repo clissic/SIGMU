@@ -18,6 +18,7 @@ const schema = new Schema({
   owner_name: { type: String },
   owner_tel: { type: String },
   owner_dir: { type: String },
+  last_modified_by: { type: String, default: "S/M" },
 });
 
 schema.plugin(mongoosePaginate);

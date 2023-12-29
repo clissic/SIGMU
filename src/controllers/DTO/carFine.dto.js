@@ -12,7 +12,8 @@ class CarFineDTO {
         owner_ci,
         owner_name,
         owner_tel,
-        owner_dir) {
+        owner_dir,
+        last_modified_by,) {
         this.fine_date = fine_date,
         this.fine_time = fine_time,
         this.fine_article = fine_article,
@@ -26,7 +27,8 @@ class CarFineDTO {
         this.owner_ci = owner_ci || "S/D",
         this.owner_name = owner_name || "S/D",
         this.owner_tel = owner_tel || "S/D",
-        this.owner_dir = owner_dir || "S/D"
+        this.owner_dir = owner_dir || "S/D",
+        this.last_modified_by = last_modified_by || "S/M"
     }
   }
   

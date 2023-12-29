@@ -270,6 +270,11 @@ class IndexController {
     const user = req.session.user;
     return res.status(200).render("arrivesTool", { user });
   }
+
+  async deleteCarFineRender(req, res) {
+    const user = req.session.user;
+    return res.status(200).render("deleteCarFine", { user });
+  }
 }
 
 export const indexController = new IndexController();
