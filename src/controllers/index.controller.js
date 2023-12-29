@@ -275,6 +275,11 @@ class IndexController {
     const user = req.session.user;
     return res.status(200).render("deleteCarFine", { user });
   }
+
+  async createUserRender(req, res) {
+    const user = req.session.user;
+    return res.status(200).render("newUser", { user });
+  }
 }
 
 export const indexController = new IndexController();

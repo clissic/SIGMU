@@ -39,3 +39,7 @@ indexRouter.get("/weather", checkLogin, indexController.weatherToolRender);
 indexRouter.get("/cameras", checkLogin, indexController.camerasToolRender);
 
 indexRouter.get("/arrives", checkLogin, indexController.arrivesToolRender);
+
+// GESTION DE USUARIOS
+
+indexRouter.get("/users/new", checkLogin, indexController.createUserRender);

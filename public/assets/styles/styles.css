@@ -349,7 +349,7 @@ a:visited {
 }
 
 .notFoundCont {
-  margin: 7vh 0 7vh 0;
+  margin: 7vh 3vw 7vh 3vw;
   display: flex;
   flex-direction: row;
   column-gap: 6vw;
