@@ -24,6 +24,7 @@ class CarFinesModel {
         fine_extra_amount: true,
         fine_author: true,
         fine_proves: true,
+        fine_status: true,
         car_brand: true,
         car_model: true,
         car_reg_number: true,
@@ -54,6 +55,7 @@ class CarFinesModel {
         fine_extra_amount: true,
         fine_author: true,
         fine_proves: true,
+        fine_status: true,
         car_brand: true,
         car_model: true,
         car_reg_number: true,
@@ -82,6 +84,7 @@ class CarFinesModel {
     owner_name,
     owner_tel,
     owner_dir,
+    last_modified_by,
   }) {
     const carFineCreated = await CarFinesMongoose.create({
       fine_number,
@@ -99,6 +102,7 @@ class CarFinesModel {
       owner_name,
       owner_tel,
       owner_dir,
+      last_modified_by,
     });
     return carFineCreated;
   }
@@ -139,6 +143,41 @@ class CarFinesModel {
     } catch (error) {
       logger.error("Error al buscar multas por correo electrónico: " + error);
       throw error;
+    }
+  }
+
+  async findByNumber(fine_number) {
+    const carFine = await CarFinesMongoose.findOne({fine_number: fine_number});
+    return carFine;
+  }
+
+  async findOneAndUpdate(query, update) {
+    try {
+
+      const updatedCarFine = await CarFinesMongoose.findOneAndUpdate(query, update);
+
+      if (!updatedCarFine) {
+        throw new Error('No se encontró la multa para actualizar');
+      }
+
+      return updatedCarFine;
+    } catch (error) {
+      throw new Error(`Error al actualizar la multa: ${error.message}`);
+    }
+  }
+
+  async findOneAndDelete(query) {
+    try {
+
+      const carFineDeleted = await CarFinesMongoose.deleteOne(query);
+
+      if (!carFineDeleted) {
+        throw new Error('No se encontró la multa para eliminar');
+      }
+
+      return carFineDeleted;
+    } catch (error) {
+      throw new Error(`Error al eliminar la multa: ${error.message}`);
     }
   }
 }

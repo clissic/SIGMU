@@ -41,6 +41,7 @@ class CarFinesService {
     owner_name,
     owner_tel,
     owner_dir,
+    last_modified_by,
   }) {
     try {
       async function ordenarFecha(fecha) {
@@ -65,7 +66,7 @@ class CarFinesService {
         }
       const carFineCreated = await carFinesModel.create({
         fine_number: await getCarFineNumber(),
-        fine_date: await ordenarFecha(fine_date),
+        fine_date: fine_date /* await ordenarFecha(fine_date) */,
         fine_time,
         fine_article,
         fine_amount,
@@ -79,6 +80,7 @@ class CarFinesService {
         owner_name,
         owner_tel,
         owner_dir,
+        last_modified_by,
       });
       await carFineCreated.save();
       return carFineCreated;
@@ -102,6 +104,32 @@ class CarFinesService {
     } catch (error) {
       logger.error("Failed to get car fines by email: " + error);
       throw error; // Re-lanza el error para que se maneje en un nivel superior si es necesario.
+    }
+  }
+
+  async findByNumber(fine_number) {
+    try {
+      return await carFinesModel.findByNumber(fine_number);
+    } catch (error) {
+      throw logger.error("Failed to find car fine by number: " + error);
+    }
+  }
+
+  async findOneAndUpdate(query, update) {
+    try {
+      const updatedCarFine = await carFinesModel.findOneAndUpdate(query, update);
+      return updatedCarFine;
+    } catch (error) {
+      throw error;
+    }
+  }
+  
+  async findOneAndDelete(query) {
+    try {
+      const carFineDeleted = await carFinesModel.findOneAndDelete(query);
+      return carFineDeleted;
+    } catch (error) {
+      throw error;
     }
   }
 }

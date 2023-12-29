@@ -149,6 +149,37 @@ class UserService {
       logger.error("Email could not be sent successfully: " + error);
     }
   }
+
+  async sendDataToNewUser({ first_name, last_name, rank, email }) {
+    const API_URL = env.apiUrl;
+    try {
+      await transport.sendMail({
+        from: env.googleEmail,
+        to: email,
+        subject: "[SIGMU] Bienvenido a SIGMU",
+        html: `
+                <div>
+                    <h1>SIGMU</h1>
+                    <p>Estimado/a:</p>
+                    <h3>${rank} ${first_name} ${last_name}</h3>
+                    <h4>Bienvenido al Sistema de Gestión de Multas de la Prefectura del Puerto de Montevideo</h4>
+                    <p>Es necesario, antes de comenzar a utilizar el sistema, que entienda que el mismo es de uso exclusivo para el personal de la Prefectura del Puerto de Montevideo y usuarios con relación directa a esta. Además, es importante aclarar que el sistema es 100% auditable en relación a las acicones de los usuarios, por lo que cualquier uso indebido del mismo podrá ser causal de consecuencias administrativas.</p>
+                    <p>Sus credenciales para el uso del sistema son:</p>
+                    <ul>
+                      <li>Email: <strong>${email}</strong></li>
+                      <li>Contraseña: <strong>123456789</strong></li>
+                    </ul>
+                    <p>Se recomienda realizar el cambio de contraseña ni bien tenga oportunidad de ingresar en el sistema. Este podrá realizarse desde el panel de usuario. Así mismo, se recomienda no compartir sus credenciales con nadie.</p>
+                    <br>
+                    <p>Se ruega no responder a este correo ya que se trata de un servicio automático de SIGMU.</p>
+                </div>
+            `,
+      });
+      return true;
+    } catch (error) {
+      logger.error("Email could not be sent successfully: " + error);
+    }
+  }
 }
 
 export const userService = new UserService();

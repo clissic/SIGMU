@@ -56,6 +56,21 @@ a:visited {
   text-align: center;
 }
 
+.subTitle {
+  text-align: center;
+  width: 90%;
+  margin: auto;
+  color: black;
+}
+
+.subTitle a {
+  color: black;
+}
+
+.subTitle a:hover {
+  text-decoration: underline;
+}
+
 #backMsg {
   width: fit-content;
   margin: auto;
@@ -334,7 +349,7 @@ a:visited {
 }
 
 .notFoundCont {
-  margin: 7vh 0 7vh 0;
+  margin: 7vh 3vw 7vh 3vw;
   display: flex;
   flex-direction: row;
   column-gap: 6vw;
@@ -387,6 +402,22 @@ a:visited {
 }
 
 #formSubmit {
+  width: auto;
+  padding: 8px 16px 8px 16px;
+  border: none;
+  border-radius: 12px;
+  background-color: #007dbf;
+  color: white;
+  font-weight: 600;
+  font-size: medium;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.15) 1px 1px 10px 1px;
+  transition: all 0.2s;
+  color: white;
+  margin: 30px auto 0 auto;
+}
+
+#updateFormSubmit {
   width: auto;
   padding: 8px 16px 8px 16px;
   border: none;
@@ -472,23 +503,21 @@ a:visited {
 /* HOME PROFILE */
 
 .homeBody {
-  padding: 5vh 5vw 5vh 5vw;
-  display: grid;
-  grid-template-columns: 1fr 5fr;
-  grid-template-areas: "user cards";
+  padding: 5vh 0vw 5vh 0vw;
+  display: flex;
+  justify-content: center;
 }
 
 .categoriesBody {
-  width: 60vw;
-  grid-area: cards;
+  width: 70vw;
   display: flex;
   flex-direction: column;
   row-gap: 2vh;
 }
 
 .categoriesBody h3 {
-  width: 90%;
-  margin: auto;
+  text-align: center;
+  margin-bottom: 5vh;
 }
 
 .categoryCont {
@@ -546,20 +575,22 @@ a:visited {
 }
 
 .categoryCard {
-  width: 12.2vw;
+  width: 25vw;
+  height: 80vh;
   display: grid;
-  grid-template-rows: 4fr 1fr;
-  height: 15vw;
+  grid-template-rows: 8fr 1fr;
   border-radius: 25px;
   transition: 0.5s;
   box-shadow: rgba(0, 0, 0, 0.15) 1px 1px 10px 1px;
   align-items: center;
+  filter: grayscale(1);
 }
 
 .categoryCard:hover {
   translate: 0px -5px 0px;
   box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 10px 1px;
   cursor: pointer;
+  filter: grayscale(0);
 }
 
 .categoryCard p {
@@ -575,61 +606,169 @@ a:visited {
 #createCarFineCard {
   background-image: url(../../img/createFineCard.jpg);
   background-size: cover;
+  background-position-x: center;
 }
 
 #updateCarFineCard {
   background-image: url(../../img/updateFineCard.jpg);
   background-size: cover;
+  background-position-x: center;
 }
 
 #deleteCarFineCard {
   background-image: url(../../img/deleteFineCard.jpg);
   background-size: cover;
+  background-position-x: left;
 }
 
 #readCarFineCard {
   background-image: url(../../img/readFineCard.jpg);
   background-size: cover;
+  background-position-x: center;
 }
 
 #createShipFineCard {
   background-image: url(../../img/createFineCard2.jpg);
   background-size: cover;
+  background-position-x: center;
 }
 
 #updateShipFineCard {
   background-image: url(../../img/updateFineCard2.jpg);
   background-size: cover;
+  background-position-x: center;
 }
 
 #deleteShipFineCard {
   background-image: url(../../img/deleteFineCard2.jpg);
   background-size: cover;
+  background-position-x: right;
 }
 
 #readShipFineCard {
   background-image: url(../../img/readFineCard2.jpg);
   background-size: cover;
+  background-position-x: center;
 }
 
 #createUserCard {
   background-image: url(../../img/createUserCard.jpg);
   background-size: cover;
+  background-position-x: 80%;
 }
 
 #readUserCard {
   background-image: url(../../img/readUserCard.jpg);
   background-size: cover;
+  background-position-x: left;
 }
 
 #updateUserCard {
   background-image: url(../../img/updateUserCard.jpg);
   background-size: cover;
+  background-position-x: center;
 }
 
 #deleteUserCard {
   background-image: url(../../img/deleteUserCard.jpg);
   background-size: cover;
+  background-position-x: 70%;
+}
+
+#aisCard {
+  background-image: url(../../img/aisTool.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#weatherCard {
+  background-image: url(../../img/weatherTool.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#sohmaWeatherCard {
+  background-image: url(../../img/sohmaWeatherTool.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#anpWeatherCard {
+  background-image: url(../../img/anpWeatherTool.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#inumetWeatherCard {
+  background-image: url(../../img/inumetWeatherTool.jpg);
+  background-size: cover;
+  background-position: 60%;
+}
+
+#tcpWeatherCard {
+  background-image: url(../../img/tcpWeatherTool.jpeg);
+  background-size: cover;
+  background-position: 40%;
+}
+
+#camerasCard {
+  background-image: url(../../img/camerasTool.jpg);
+  background-size: cover;
+  background-position: 48%;
+}
+
+#oesteCameraCard {
+  background-image: url(../../img/torreOesteCameraTool.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#norteCameraCard {
+  background-image: url(../../img/torreNorteCameraTool.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#mercadoCameraCard {
+  background-image: url(../../img/mercadoDelPuertoCameraTool.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#terminalCameraCard {
+  background-image: url(../../img/terminalRioBrancoCameraTool.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#anpArrivesCard {
+  background-image: url(../../img/anpTool.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#arrivesCard {
+  background-image: url(../../img/arrivesAnpTool.jpg);
+  background-size: cover;
+  background-position: right;
+}
+
+#shipDataCard {
+  background-image: url(../../img/shipDataTool.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#portOcupationCard {
+  background-image: url(../../img/ocupationAnpTool.jpg);
+  background-size: cover;
+  background-position: 80%;
+}
+
+#mooringAssignCard {
+  background-image: url(../../img/mooringTool.jpg);
+  background-size: cover;
+  background-position: left;
 }
 
 .disabled {
@@ -853,11 +992,11 @@ th input {
   width: 100%;
 }
 
-.statusIndicatorfalse {
+.statusIndicatordue {
   width: 30%;
 }
 
-.statusIndicatorfalse button{
+.statusIndicatordue button{
   text-align: center;
   color: white;
   background-color: rgb(200, 0, 0);
@@ -869,14 +1008,46 @@ th input {
   width: 100%;
 }
 
-.statusIndicatortrue {
+.statusIndicatorpaid {
   width: 30%;
 }
 
-.statusIndicatortrue button{
+.statusIndicatorpaid button{
   text-align: center;
   color: white;
   background-color: rgb(0, 130, 0);
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: .5rem 1rem;
+  width: 100%;
+}
+
+.statusIndicatordismissed {
+  width: 30%;
+}
+
+.statusIndicatordismissed button{
+  text-align: center;
+  color: white;
+  background-color: rgb(0, 174, 174);
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: .5rem 1rem;
+  width: 100%;
+}
+
+.statusIndicatornoData {
+  width: 30%;
+}
+
+.statusIndicatornoData button{
+  text-align: center;
+  color: white;
+  background-color: rgb(255, 145, 0);
   border-radius: 15px;
   border: none;
   cursor: pointer;
@@ -919,4 +1090,113 @@ th input {
   cursor: not-allowed;
   pointer-events: none;
   color: rgb(180, 180, 180) !important;
+}
+
+/* NUEVO MENU */
+
+#carFinesMenuCard {
+  background-image: url(../../img/carFinesMenuCard.jpg);
+  background-size: cover;
+  background-position-y: 80%;
+}
+
+#shipFinesMenuCard {
+  background-image: url(../../img/shipFinesMenuCard.jpg);
+  background-size: cover;
+  background-position-y: 95%;
+}
+
+#usersMenuCard{
+  background-image: url(../../img/userMenuCard.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#toolsMenuCard{
+  background-image: url(../../img/toolsMenuCard.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+#utilityMenuCard{
+  background-image: url(../../img/utilityMenuCard.jpg);
+  background-size: cover;
+  background-position-y: 65%;
+}
+
+.menuCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bolder;
+  font-size: x-large;
+  width: 95%;
+  height: 15vw;
+  border-radius: 25px;
+  transition: 0.5s;
+  box-shadow: rgba(0, 0, 0, 0.15) 1px 1px 10px 1px;
+  filter: grayscale(1);
+  color: white;
+  text-shadow: black 1px 1px 2px;
+}
+
+.menuCard:hover {
+  translate: 0px -5px 0px;
+  box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 10px 1px;
+  cursor: pointer;
+  filter: grayscale(0);
+}
+
+.menuCategoriesBody {
+  width: 60vw;
+  grid-area: cards;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2vh;
+}
+
+.menuCategoriesBody h3 {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 3vh;
+}
+
+.menuCont {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2vw;
+  margin-bottom: 3vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnBackCont {
+  display: flex;
+  align-items: center;
+}
+
+.btnBack {
+  margin: 3vh auto 3vh auto;
+  padding: 1vh 2vw 1vh 2vw;
+  background-color: #007dbf;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: .2s;
+}
+
+.btnBack:hover {
+  background-color: #005d8f;
+}
+
+.btnBack:active {
+  background-color: #003754;
+}
+
+/* FIN NUEVO MENU */
+
+.aisBody {
+  width: 90%;
 }

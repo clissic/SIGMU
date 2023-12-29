@@ -242,6 +242,27 @@ class UsersController {
       return res.status(400).render("errorPage", { msg: "La solicitud no fue realizada con éxito." });
     }
   }
+
+  async createAndSendEmail(req, res) {
+    const user = req.session.user;
+    try {
+      const {first_name, last_name, rank, email, avatar} = req.body;
+      const password = createHash("123456789");
+      const emailSent = await userService.sendDataToNewUser({ first_name, last_name, rank, email })
+      const userCreated = await userService.create({ avatar, first_name, last_name, rank, email, password})
+      console.log(emailSent + " " + userCreated)
+      if (emailSent && userCreated) {
+        logger.info(`La cuenta de ${email} fue creada correctamente por ${user.email} (${user.rank}).`);
+        return res.status(200).render("success", { msg: `Cuenta de ${email} fue creada con éxito.` });
+      } else {
+        logger.info(`La cuenta de ${email} no fue creada correctamente por ${user.email} (${user.rank})`)
+        return res.status(400).render("errorPage", { msg: "La cuenta no pudo ser creada con éxito."})
+      }
+    } catch (error) {
+      logger.error("Error in users.controller createAndSendEmail: " + error);
+      return res.status(400).render("errorPage", { msg: "La cuenta no pudo ser creada con éxito debido a un error del servidor. Por favor, verifica que el email utilizado no se encuentre ya en uso e intentelo nuevamente." });
+    }
+  }
 }
 
 export const usersController = new UsersController();

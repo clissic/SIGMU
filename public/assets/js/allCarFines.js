@@ -3,19 +3,31 @@ const statusBtns = document.getElementsByClassName("fineStatusBtn");
 for (let i = 0; i < statusBtns.length; i++) {
   const dataId = statusBtns[i].getAttribute("data-id");
   const dataNumber = statusBtns[i].getAttribute("data-number");
-  const status = statusBtns[i].getAttribute("title");
+  const status = statusBtns[i].getAttribute("data-status");
   statusBtns[i].addEventListener("click", () => {
-    if (status === "false") {
+    if (status === "due") {
       Swal.fire({
         icon: "error",
         title: "IMPAGO",
         text: `La multa N° ${dataNumber} (ID: ${dataId}) no ha sido pagada.`,
       });
-    } else {
+    } else if (status === "paid") {
       Swal.fire({
         icon: "success",
         title: "PAGO",
         text: `La multa N° ${dataNumber} (ID: ${dataId}) ya fue pagada.`,
+      });
+    } else if (status === "dismissed") {
+      Swal.fire({
+        icon: "info",
+        title: "ATENCIÓN",
+        text: `La multa N° ${dataNumber} (ID: ${dataId}) fue desestimada.`,
+      });
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "SIN DATOS",
+        text: `Se desconoce el estado de la multa N° ${dataNumber} (ID: ${dataId}).`,
       });
     }
   });

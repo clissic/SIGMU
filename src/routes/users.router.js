@@ -7,6 +7,8 @@ usersRouter.post("/newAccount", usersController.sendNewAccEmail);
 
 usersRouter.post("/create", usersController.create);
 
+usersRouter.post("/createAndSendEmail", usersController.createAndSendEmail);
+
 usersRouter.get("/", usersController.getAll);
 
 usersRouter.get("/:id", usersController.findById);
