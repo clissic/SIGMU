@@ -1,4 +1,6 @@
+import mongoose from "mongoose";
 import { CarFinesMongoose } from "../DAO/models/mongoose/carFines.mongoose.js";
+import { UserMongoose } from "../DAO/models/mongoose/users.mongoose.js";
 import { carFinesServices } from "../services/carFines.service.js";
 import { logger } from "../utils/logger.js";
 
@@ -279,6 +281,131 @@ class IndexController {
   async createUserRender(req, res) {
     const user = req.session.user;
     return res.status(200).render("newUser", { user });
+  }
+
+  async paginateUsers(req, res) {
+    const user = req.session.user;
+    try {
+      let {
+        currentPage,
+        pageSize,
+        sort,
+        first_name,
+        last_name,
+        rank,
+        email,
+        role,
+        fines,
+      } = req.query;
+      const sortOption =
+        sort === "asc"
+          ? { last_name: 1 }
+          : sort === "desc"
+          ? { last_name: -1 }
+          : {};
+
+      const options = {
+        sort: sortOption,
+        limit: parseInt(pageSize, 10) || 10,
+        page: parseInt(currentPage, 10) || 1,
+      };
+
+      // En el método de paginación
+      const mongooseFilter = {};
+
+      // Lógica de los filtros
+      if (first_name) {
+        mongooseFilter.first_name = { $regex: new RegExp(first_name, "i") };
+      }
+      if (last_name) {
+        mongooseFilter.last_name = { $regex: new RegExp(last_name, "i") };
+      }
+      if (rank) {
+        mongooseFilter.rank = { $regex: new RegExp(rank, "i") };
+      }
+      if (email) {
+        mongooseFilter.email = { $regex: new RegExp(email, "i") };
+      }
+      if (role) {
+        mongooseFilter.role = { $regex: new RegExp(role, "i") };
+      }
+      if (fines) {
+        mongooseFilter.fines = { $size: parseInt(fines, 10) };
+      }
+
+      const queryResult = await UserMongoose.paginate(
+        mongooseFilter,
+        options
+      );
+
+      const paginatedUsers = queryResult.docs.map((user) => {
+        return {
+          _id: user._id,
+          first_name: user.first_name,
+          last_name: user.last_name,
+          rank: user.rank,
+          email: user.email,
+          role: user.role,
+          fines: user.fines.length,
+          avatar: user.avatar,
+        };
+      });
+
+      const {
+        totalDocs,
+        limit,
+        totalPages,
+        page,
+        pagingCounter,
+        hasPrevPage,
+        hasNextPage,
+        prevPage,
+        nextPage,
+      } = queryResult;
+
+      const prevLink = hasPrevPage ? `/index/allCarFines?currentPage=${prevPage}&pageSize=${pageSize || ""}&first_name=${first_name ? first_name : ""}&last_name=${last_name ? last_name : ""}&rank=${rank ? rank : ""}&email=${email ? email : ""}&role=${role ? role : ""}`: null;
+
+      const nextLink = hasNextPage ? `/index/allCarFines?currentPage=${nextPage}&pageSize=${pageSize || ""}&first_name=${first_name ? first_name : ""}&last_name=${last_name ? last_name : ""}&rank=${rank ? rank : ""}&email=${email ? email : ""}&role=${role ? role : ""}`: null;
+
+      return res
+        .status(200)
+        .render("allUsersPaginated", {
+          user,
+          paginatedUsers,
+          totalDocs,
+          limit,
+          totalPages,
+          page,
+          pagingCounter,
+          prevLink,
+          nextLink,
+          hasNextPage,
+          hasPrevPage,
+        }); /* json({
+        status: 'success',
+        msg: 'Fines list',
+        payload: {
+          paginatedFines,
+          totalDocs,
+          limit,
+          totalPages,
+          prevPage,
+          nextPage,
+          page,
+          hasPrevPage,
+          hasNextPage,
+          prevLink,
+          nextLink,
+          pagingCounter,
+        },
+      }); */
+    } catch (error) {
+      console.error("Error getting users and pagination:", error);
+      return res.status(500).json({
+        status: "error",
+        msg: "Error getting users and pagination.",
+      });
+    }
   }
 }
 
