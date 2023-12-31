@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import mongoosePaginate from "mongoose-paginate-v2";
 
 const schema = new Schema({
   avatar: { type: String, default: "/img/avatar.png" },
@@ -10,5 +11,7 @@ const schema = new Schema({
   role: { type: String, default: "user"},
   fines: { type: Array, default: [] },
 });
+
+schema.plugin(mongoosePaginate);
 
 export const UserMongoose = model("users", schema);

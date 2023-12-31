@@ -245,7 +245,6 @@ class CarFinesController {
       if (carFine) {
         logger.info(`Multa N° ${fine_number} actualizada con éxito por ${user.rank} ${user.first_name} ${user.last_name}: ${carFine}` );
         res.status(200).render("success", { msg: `Multa N°${fine_number} actualizada correctamente.`})
-        // Aquí puedes enviar una respuesta al cliente si es necesario
       } else {
         logger.info(`No se encontró la multa con el N° ${fine_number} por ${user.rank} ${user.first_name} ${user.last_name}.`);
         res.status(200).render("errorPage", { msg: `La multa N°${fine_number} no pudo ser actualizada por no encontrarse la multa.`})
@@ -288,7 +287,6 @@ class CarFinesController {
       if (carFineDeleted) {
         logger.info(`Multa N° ${fine_number} eliminada con éxito por ${user.rank} ${user.first_name} ${user.last_name} (${user.email}).` );
         res.status(200).render("success", { msg: `Multa N°${fine_number} eliminada correctamente.`})
-        // Aquí puedes enviar una respuesta al cliente si es necesario
       } else {
         logger.info(`No se encontró la multa con el N° ${fine_number} por ${user.rank} ${user.first_name} ${user.last_name}.`);
         res.status(200).render("errorPage", { msg: `La multa N°${fine_number} no pudo ser eliminada por no encontrarse la multa.`})
