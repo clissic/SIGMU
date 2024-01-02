@@ -412,6 +412,11 @@ class IndexController {
     const user = req.session.user;
     return res.status(200).render("updateUser", { user })
   }
+
+  async deleteUser (req, res) {
+    const user = req.session.user;
+    return res.status(200).render("deleteUser", { user })
+  }
 }
 
 export const indexController = new IndexController();

@@ -63,7 +63,7 @@ class UserService {
     }
   }
 
-  async deletOne({ _id }) {
+  async deleteOne({ _id }) {
     try {
       return await usersModel.deleteOne({ _id });
     } catch (error) {

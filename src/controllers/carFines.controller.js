@@ -266,12 +266,8 @@ class CarFinesController {
         }
       }
     } catch (e) {
-      logger.error("Error on carFinesController.findByNumber: " + e);
-      return res.status(500).json({
-        status: "error",
-        msg: "Server error",
-        payload: [],
-      });
+      logger.error("Error on userController.findByNumberAndRenderForDelete: " + e);
+      return res.status(500).render("errorPage", { msg: "Error del servidor al eliminar multa."});
     }
   }
 

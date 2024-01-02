@@ -362,6 +362,11 @@ a:visited {
   width: 40vw;
 }
 
+.formStyle2 {
+  margin: 4vh auto 8vh auto;
+  width: 60vw;
+}
+
 .formTitle {
   text-align: center;
 }

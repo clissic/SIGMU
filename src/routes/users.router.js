@@ -21,3 +21,7 @@ usersRouter.post("/updateDataForm", usersController.updateDataAndRender);
 usersRouter.get("/update/userUpdate", checkLogin, usersController.findByIdAndRenderForUpdate);
 
 usersRouter.get("/updateUser/:id", checkLogin, usersController.findByIdAndUpdate);
+
+usersRouter.get("/findBy/id/delete", checkLogin, usersController.findByIdAndRenderForDelete);
+
+usersRouter.get("/delete/:id", checkLogin, usersController.findByIdAndDelete);
