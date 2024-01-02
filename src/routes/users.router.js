@@ -1,6 +1,6 @@
 import express from "express";
 import { usersController } from "../controllers/users.controller.js";
-import { checkLogin } from "../middlewares/auth.js";
+import { checkLogin, checkAdmin } from "../middlewares/auth.js";
 
 export const usersRouter = express.Router();
 
@@ -18,10 +18,10 @@ usersRouter.post("/updatePasswordForm", usersController.updatePasswordAndRender)
 
 usersRouter.post("/updateDataForm", usersController.updateDataAndRender);
 
-usersRouter.get("/update/userUpdate", checkLogin, usersController.findByIdAndRenderForUpdate);
+usersRouter.get("/update/userUpdate", checkLogin, checkAdmin, usersController.findByIdAndRenderForUpdate);
 
-usersRouter.get("/updateUser/:id", checkLogin, usersController.findByIdAndUpdate);
+usersRouter.get("/updateUser/:id", checkLogin, checkAdmin, usersController.findByIdAndUpdate);
 
-usersRouter.get("/findBy/id/delete", checkLogin, usersController.findByIdAndRenderForDelete);
+usersRouter.get("/findBy/id/delete", checkLogin, checkAdmin, usersController.findByIdAndRenderForDelete);
 
-usersRouter.get("/delete/:id", checkLogin, usersController.findByIdAndDelete);
+usersRouter.get("/delete/:id", checkLogin, checkAdmin, usersController.findByIdAndDelete);

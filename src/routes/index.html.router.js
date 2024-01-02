@@ -1,6 +1,6 @@
 import express from "express";
 import { indexController } from "../controllers/index.controller.js";
-import { checkLogin } from "../middlewares/auth.js";
+import { checkLogin, checkAdmin } from "../middlewares/auth.js";
 
 export const indexRouter = express.Router();
 
@@ -28,7 +28,7 @@ indexRouter.get("/updateDataForm", checkLogin, indexController.updateDataForm);
 
 indexRouter.get("/shipFinesMenu", checkLogin, indexController.shipFinesMenuRender);
 
-indexRouter.get("/usersMenu", checkLogin, indexController.usersMenuRender);
+indexRouter.get("/usersMenu", checkLogin, checkAdmin, indexController.usersMenuRender);
 
 indexRouter.get("/toolsMenu", checkLogin, indexController.toolsMenuRender);
 
@@ -42,10 +42,10 @@ indexRouter.get("/arrives", checkLogin, indexController.arrivesToolRender);
 
 // GESTION DE USUARIOS
 
-indexRouter.get("/users/new", checkLogin, indexController.createUserRender);
+indexRouter.get("/users/new", checkLogin, checkAdmin, indexController.createUserRender);
 
-indexRouter.get("/users/allUsers", checkLogin, indexController.paginateUsers);
+indexRouter.get("/users/allUsers", checkLogin, checkAdmin, indexController.paginateUsers);
 
-indexRouter.get("/users/updateUser", checkLogin, indexController.updateUser);
+indexRouter.get("/users/updateUser", checkLogin, checkAdmin, indexController.updateUser);
 
-indexRouter.get("/users/deleteUser", checkLogin, indexController.deleteUser);
+indexRouter.get("/users/deleteUser", checkLogin, checkAdmin, indexController.deleteUser);
