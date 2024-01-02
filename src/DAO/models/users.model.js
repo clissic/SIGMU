@@ -88,6 +88,7 @@ class UsersModel {
     password,
     role,
     fines,
+    last_modified_by
   }) {
     const userUpdated = await UserMongoose.updateOne(
       {
@@ -102,6 +103,7 @@ class UsersModel {
         password,
         role,
         fines,
+        last_modified_by
       }
     );
     return userUpdated;

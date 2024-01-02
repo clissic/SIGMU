@@ -1,5 +1,6 @@
 import express from "express";
 import { usersController } from "../controllers/users.controller.js";
+import { checkLogin } from "../middlewares/auth.js";
 
 export const usersRouter = express.Router();
 
@@ -16,3 +17,7 @@ usersRouter.get("/:id", usersController.findById);
 usersRouter.post("/updatePasswordForm", usersController.updatePasswordAndRender);
 
 usersRouter.post("/updateDataForm", usersController.updateDataAndRender);
+
+usersRouter.get("/update/userUpdate", checkLogin, usersController.findByIdAndRenderForUpdate);
+
+usersRouter.get("/updateUser/:id", checkLogin, usersController.findByIdAndUpdate);

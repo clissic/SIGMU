@@ -45,3 +45,5 @@ indexRouter.get("/arrives", checkLogin, indexController.arrivesToolRender);
 indexRouter.get("/users/new", checkLogin, indexController.createUserRender);
 
 indexRouter.get("/users/allUsers", checkLogin, indexController.paginateUsers);
+
+indexRouter.get("/users/updateUser", checkLogin, indexController.updateUser);

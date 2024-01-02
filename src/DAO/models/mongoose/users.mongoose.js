@@ -10,6 +10,7 @@ const schema = new Schema({
   password: { type: String, max: 100 },
   role: { type: String, default: "user"},
   fines: { type: Array, default: [] },
+  last_modified_by: { type: String, default: "S/M" },
 });
 
 schema.plugin(mongoosePaginate);

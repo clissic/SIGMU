@@ -407,6 +407,11 @@ class IndexController {
       });
     }
   }
+
+  async updateUser (req, res) {
+    const user = req.session.user;
+    return res.status(200).render("updateUser", { user })
+  }
 }
 
 export const indexController = new IndexController();

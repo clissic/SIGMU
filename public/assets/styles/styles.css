@@ -1254,13 +1254,13 @@ th input {
   text-decoration: underline;
 }
 
-#rank, #role {
+#inputRank, #inputRole {
   border: none;
   background-color: #f1f1f1;
   height: 1.5rem;
   border-radius: 5px;
   padding-left: 5px;
-  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
 .userSearchCard {

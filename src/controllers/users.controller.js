@@ -25,6 +25,7 @@ class UsersController {
   async findById(req, res) {
     try {
       const { id } = req.params;
+      console.log(id)
       const user = await userService.findById(id);
       if (user) {
         return res.status(200).json({
@@ -38,7 +39,7 @@ class UsersController {
           .json({ status: "error", message: "User does not exist" });
       }
     } catch (error) {
-      return res.status(500).json({ error: "Internal server error" });
+      return res.status(500).json({ error: "Internal server error!!" });
     }
   }
 
@@ -261,6 +262,47 @@ class UsersController {
     } catch (error) {
       logger.error("Error in users.controller createAndSendEmail: " + error);
       return res.status(400).render("errorPage", { msg: "La cuenta no pudo ser creada con éxito debido a un error del servidor. Por favor, verifica que el email utilizado no se encuentre ya en uso e intentelo nuevamente." });
+    }
+  }
+
+  async findByIdAndRenderForUpdate(req, res) {
+    try {
+      const { id } = req.query;
+      const user = req.session.user;
+      if (user.role !== "admin" && user.role !== "superAdmin" && user.role !== "contable") {
+        res.status(200).render("updateUser", { user, msg: `Su rol "${user.role}" no cuenta con autorización para modificar usuarios. Si entiende necesaria una modificación deberá solicitarla a un administrador o deberá solicitar un cambio de rol desde el panel de control del usuario.`})
+      } else {
+        const userFound = await userService.findById(id);
+        if (userFound) {
+          return res.status(200).render("updateUser", { msg: `MODIFICAR USUARIO ${userFound.rank} ${userFound.first_name} ${userFound.last_name}:`, user, userFound, _id: userFound._id, first_name: userFound.first_name, last_name: userFound.last_name, rank: userFound.rank, email: userFound.email, role: userFound.role, avatar: userFound.avatar });
+        } else {
+          return res.status(200).render("updateUser", { user, msg: "Usuario no encontrado. Verifique nuevamente el ID y vuelva a intentarlo." });
+        }
+      }
+    } catch (e) {
+      logger.error("Error on userController.findByIdAndRenderForUpdate: " + e);
+      return res.status(500).render("errorPage", { msg: "Error del servidor al actualizar usuario."});
+    }
+  }
+
+  async findByIdAndUpdate (req, res) {
+    const user = req.session.user
+    const { id } = req.params;
+    const updatedUser = req.query;
+    updatedUser._id = id
+    updatedUser.last_modified_by = user.email;
+    try {
+      const userFound = await userService.updateOne(updatedUser);
+      if (userFound) {
+        logger.info(`Usuario ${updatedUser.rank} ${updatedUser.first_name} ${updatedUser.last_name} actualizado con éxito por ${user.rank} ${user.first_name} ${user.last_name}: ${JSON.stringify(updatedUser)}` );
+        res.status(200).render("success", { msg: `Usuario ${updatedUser.rank} ${updatedUser.first_name} ${updatedUser.last_name} actualizado con éxito.`})
+      } else {
+        logger.info(`No se encontró el usuario con el ID: ${id} por ${user.rank} ${user.first_name} ${user.last_name}.`);
+        res.status(200).render("errorPage", { msg: `El usuario con ID: ${id} no pudo ser actualizada por no encontrarse en la base de datos.`})
+      }
+    } catch (error) {
+      logger.error(`Error de servidor al actualizar usuario con ID: ${id} por ${user.rank} ${user.first_name} ${user.last_name}:`, error);
+      res.status(200).render("errorPage", { msg: `El usuario con el ID: ${id} no pudo ser actualizada por un error del servidor.`})
     }
   }
 }

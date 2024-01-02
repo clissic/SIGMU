@@ -23,6 +23,7 @@ export function iniPassport() {
             logger.info("Invalid password");
             return done(null, false);
           }
+          logger.info(`${user.rank} ${user.first_name} ${user.last_name} is logged as ${user.role}`);
           return done(null, user);
         } catch (err) {
           return done(err);

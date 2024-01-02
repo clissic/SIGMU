@@ -44,6 +44,7 @@ class UserService {
     email,
     password,
     role,
+    last_modified_by
   }) {
     try {
       return await usersModel.updateOne({
@@ -55,6 +56,7 @@ class UserService {
         email,
         password,
         role,
+        last_modified_by
       });
     } catch (error) {
       throw new Error("Failed to update user by ID");

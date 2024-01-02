@@ -43,10 +43,12 @@ class SessionsController {
   }
 
   logout(req, res) {
+    const user = req.session.user
     req.session.destroy((err) => {
       if (err) {
         return res.render("errorPage", { msg: "Logout error." });
       }
+      logger.info(`${user.rank} ${user.first_name} ${user.last_name} logged out`);
       res.redirect("/");
     });
   }
